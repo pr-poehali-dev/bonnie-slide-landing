@@ -302,6 +302,7 @@ export default function B2B() {
           <nav className="hidden md:flex items-center gap-8 text-sm text-vibe-muted">
             <a href="#directions" className="hover:text-vibe-red transition-colors">Направления</a>
             <a href="#formats" className="hover:text-vibe-red transition-colors">Форматы</a>
+            <a href="/b2b/courses" className="text-vibe-red hover:text-red-400 transition-colors font-oswald uppercase tracking-wide text-xs border border-vibe-red/40 px-3 py-1">Конструктор</a>
             <a href="#calc" className="hover:text-vibe-red transition-colors">Калькулятор</a>
             <a href="#cases" className="hover:text-vibe-red transition-colors">Кейсы</a>
             <a href="#faq" className="hover:text-vibe-red transition-colors">FAQ</a>
