@@ -95,7 +95,8 @@
     }
   }
 
-  .section-appear {
+  .section-appear,
+  .b2b-appear {
     opacity: 0;
     transform: translateY(40px);
     transition:
@@ -103,7 +104,8 @@
       transform 0.7s ease;
   }
 
-  .section-appear.visible {
+  .section-appear.visible,
+  .b2b-appear.visible {
     opacity: 1;
     transform: translateY(0);
   }
