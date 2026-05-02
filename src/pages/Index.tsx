@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Icon from "@/components/ui/icon";
+import Logo from "@/components/Logo";
 
 const HERO_BG = "https://cdn.poehali.dev/projects/70b2a877-599d-4d33-ad00-9094dfe27d22/files/490d0bd5-1c50-4535-bc4a-a1e382543e4e.jpg";
 const STUDENT_IMG = "https://cdn.poehali.dev/projects/70b2a877-599d-4d33-ad00-9094dfe27d22/files/25d78737-b670-43c0-8ad1-52454ffc42a7.jpg";
@@ -84,9 +85,7 @@ export default function Index() {
       {/* HEADER */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-vibe-dark/90 backdrop-blur-sm border-b border-vibe-dark3">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="font-oswald text-xl tracking-widest text-vibe-light">
-            ВАЙБ<span className="text-vibe-red">КОД</span>
-          </div>
+          <Logo width={120} height={14} />
           <nav className="hidden md:flex items-center gap-8 text-sm text-vibe-muted">
             <a href="#benefits" className="hover:text-vibe-red transition-colors">Преимущества</a>
             <a href="#lessons" className="hover:text-vibe-red transition-colors">Программа</a>
@@ -371,9 +370,7 @@ export default function Index() {
       {/* FOOTER */}
       <footer className="py-8 border-t border-vibe-dark3 bg-vibe-dark">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-vibe-muted text-xs">
-          <div className="font-oswald text-base text-vibe-light">
-            ВАЙБ<span className="text-vibe-red">КОД</span>
-          </div>
+          <Logo width={100} height={12} />
           <div>© 2025 Вайбкодинг. Все права защищены.</div>
           <div className="flex gap-4">
             <a href="#" className="hover:text-vibe-red transition-colors">Политика конфиденциальности</a>
