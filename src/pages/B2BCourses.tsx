@@ -6,13 +6,24 @@ import Logo from "@/components/Logo";
 
 type Category = "presentations" | "ai" | "data" | "design" | "oratory";
 
+// Images per category
+const CAT_IMAGES: Record<Category, string> = {
+  presentations: "https://cdn.poehali.dev/projects/70b2a877-599d-4d33-ad00-9094dfe27d22/files/a837d8c1-2de7-48e2-81ed-ffe171091584.jpg",
+  ai:            "https://cdn.poehali.dev/projects/70b2a877-599d-4d33-ad00-9094dfe27d22/files/1c39b44f-303a-46a7-95fa-3d48273ef42c.jpg",
+  data:          "https://cdn.poehali.dev/projects/70b2a877-599d-4d33-ad00-9094dfe27d22/files/916540ad-537a-4f41-9141-ed7001b24a83.jpg",
+  design:        "https://cdn.poehali.dev/projects/70b2a877-599d-4d33-ad00-9094dfe27d22/files/eddb6956-d6c2-4a89-a5cd-9569fda83d44.jpg",
+  oratory:       "https://cdn.poehali.dev/projects/70b2a877-599d-4d33-ad00-9094dfe27d22/files/7e38e73e-3d4e-45f5-8158-6646f31f05f6.jpg",
+};
+
+type CourseTag = "практика" | "с нуля" | "для команды" | "быстрый старт" | "углублённый" | "ИИ-инструменты" | "российское ПО" | "живой тренинг" | "аналитика" | "визуализация" | "автоматизация" | "выступления";
+
 interface Course {
   id: number;
   title: string;
   desc: string;
   category: Category;
   duration: string;
-  level: "базовый" | "продвинутый" | "для бизнеса";
+  tag: CourseTag;
   price: number;
   popular?: boolean;
   isNew?: boolean;
@@ -28,31 +39,31 @@ interface Task {
 }
 
 const COURSES: Course[] = [
-  { id: 1, category: "presentations", title: "Power of PowerPoint", desc: "Весь арсенал инструментов для создания убойно-красивых слайдов в PowerPoint от экспертов ведущей студии презентаций.", duration: "8 ч", level: "базовый", price: 18900, popular: true, tools: ["PowerPoint"] },
-  { id: 2, category: "presentations", title: "Тройной удар по PowerPoint: цвета, шрифты, концепции", desc: "Визуализируйте диаграммы, огромные таблицы и многоступенчатые процессы понятно и красиво. Самые полезные фишки Excel в придачу.", duration: "6 ч", level: "продвинутый", price: 16900, tools: ["PowerPoint", "Excel"] },
-  { id: 3, category: "design", title: "Шаблоны убойных слайдов", desc: "Сборник готовых визуальных решений на все случаи презентационной жизни. Стань ещё сильнее в дизайне и композиции слайдов!", duration: "5 ч", level: "продвинутый", price: 14900, tools: ["PowerPoint"] },
-  { id: 4, category: "data", title: "Графики и таблицы", desc: "Визуализируйте диаграммы, огромные таблицы и многоступенчатые процессы. Освойте самые полезные фишки Excel.", duration: "5 ч", level: "базовый", price: 13900, tools: ["PowerPoint", "Excel"] },
-  { id: 5, category: "presentations", title: "Убойная Анимация", desc: "Курс для тех, кто хочет усилить слайды с помощью анимации. Научитесь делать из своей презентации крутой видеоролик!", duration: "4 ч", level: "продвинутый", price: 12900, tools: ["PowerPoint"] },
-  { id: 6, category: "ai", title: "ИИ-креатор: создание контента с нейросетями", desc: "Создавайте уникальный контент с помощью нейросетей и применяйте ИИ в работе.", duration: "6 ч", level: "для бизнеса", price: 19900, popular: true, tools: ["ChatGPT", "Midjourney", "Claude"] },
-  { id: 7, category: "ai", title: "Вайбкодинг для автоматизации рабочих задач", desc: "Кратное ускорение рутинных процессов: сотрудники создают дашборды, порталы и AI-ассистентов сами — описывая задачу нейросети.", duration: "8 ч", level: "для бизнеса", price: 24900, isNew: true, tools: ["ChatGPT", "Claude", "Cursor"] },
-  { id: 8, category: "ai", title: "Очный мастер-класс по нейросетям", desc: "Корпоративное обучение для тех, кто хочет внедрить нейросети в работу команды и выполнять задачи быстрее и дешевле.", duration: "6 ч", level: "для бизнеса", price: 22900, tools: ["ChatGPT", "Claude"] },
-  { id: 9, category: "ai", title: "Нейросети для создания презентаций", desc: "От идеи до готовой презентации за час с помощью ИИ.", duration: "4 ч", level: "базовый", price: 14900, popular: true, tools: ["ChatGPT", "Gamma", "Deepseek"] },
-  { id: 10, category: "ai", title: "Практикум: Нейросети для менеджеров", desc: "Научись оптимизировать и автоматизировать управленческие процессы с помощью нейросетей.", duration: "5 ч", level: "для бизнеса", price: 18900, tools: ["ChatGPT", "NotebookLM"] },
-  { id: 11, category: "presentations", title: "Создание презентаций в Р7 Офис", desc: "Стильные, современные слайды в Р7-Презентациях — без сторонних сервисов. Подходит переходящим с PowerPoint на российское ПО.", duration: "5 ч", level: "базовый", price: 13900, tools: ["Р7 Офис"] },
-  { id: 12, category: "data", title: "Аналитика данных без боли", desc: "Превращайте цифры и отчёты в ясные инсайты, выделяйте главное и создавайте профессиональные дашборды.", duration: "8 ч", level: "для бизнеса", price: 21900, tools: ["Excel", "PowerPoint"] },
-  { id: 13, category: "data", title: "Графики, таблицы, много всего на слайде", desc: "Работа с большими объёмами данных, акценты на важном и красивое представление информации.", duration: "5 ч", level: "для бизнеса", price: 15900, tools: ["PowerPoint", "Excel"] },
-  { id: 14, category: "design", title: "Продвинутый дизайн презентаций", desc: "Подбирайте шрифты под тематику слайдов, применяйте цвет и форму для мощной визуальной концепции.", duration: "6 ч", level: "продвинутый", price: 17900, tools: ["PowerPoint"] },
-  { id: 15, category: "presentations", title: "Основы дизайна презентаций", desc: "Делайте слайды выше среднего при помощи инструментов PowerPoint. Подходит начинающим и продолжающим.", duration: "5 ч", level: "базовый", price: 12900, tools: ["PowerPoint"] },
-  { id: 16, category: "design", title: "Шаблоны убойных слайдов для бизнеса", desc: "Создаём 76+ готовых шаблонов для быстрого создания слайдов: работаем с большим объёмом информации и делаем красиво.", duration: "7 ч", level: "для бизнеса", price: 19900, tools: ["PowerPoint"] },
-  { id: 17, category: "data", title: "Excel для бизнеса", desc: "Управляйтесь с данными на уровне специалиста, делайте красивые графики и таблицы в связке с Excel.", duration: "6 ч", level: "для бизнеса", price: 16900, tools: ["Excel"] },
-  { id: 18, category: "presentations", title: "Убойная анимация для бизнеса", desc: "Усильте слайды с помощью качественной анимации и сделайте презентацию запоминающейся.", duration: "4 ч", level: "для бизнеса", price: 14900, tools: ["PowerPoint"] },
-  { id: 19, category: "design", title: "Photoshop для бизнеса", desc: "Когда PowerPoint не хватает. Базовая ретушь и создание картинок с нуля.", duration: "6 ч", level: "для бизнеса", price: 17900, tools: ["Photoshop"] },
-  { id: 20, category: "ai", title: "Нейросети для бизнеса", desc: "Оптимизируйте рабочие процессы с помощью ИИ и делегируйте рутинные задачи нейросетям.", duration: "6 ч", level: "для бизнеса", price: 18900, tools: ["ChatGPT", "Claude"] },
-  { id: 21, category: "design", title: "Дизайн в Figma для бизнеса", desc: "Осваивайте Figma с нуля и делайте эффектные слайды за пару минут. Всё, что необходимо в работе.", duration: "7 ч", level: "для бизнеса", price: 19900, tools: ["Figma"] },
-  { id: 22, category: "oratory", title: "Ораторское мастерство для бизнеса", desc: "Выступайте уверенно перед клиентами, партнёрами и инвесторами: техники убеждения и управления вниманием аудитории.", duration: "6 ч", level: "для бизнеса", price: 21900, popular: true, tools: ["Публичные выступления"] },
-  { id: 23, category: "presentations", title: "Структура презентации и сторителлинг", desc: "Прокачиваем навыки создания структуры, сторителлинга, работы с контентом и смыслом.", duration: "5 ч", level: "базовый", price: 14900, tools: ["PowerPoint", "Keynote"] },
-  { id: 24, category: "ai", title: "Нейросети для маркетинга и контента", desc: "Автоматизируйте маркетинговые процессы и повышайте эффективность кампаний с помощью нейросетей.", duration: "6 ч", level: "для бизнеса", price: 19900, isNew: true, tools: ["ChatGPT", "Midjourney", "Claude"] },
-  { id: 25, category: "presentations", title: "Слайды для выступления. Экспресс", desc: "Пошаговая инструкция по подготовке презентации и выступления на уровне BigTech с Bonnie&Slide.", duration: "3 ч", level: "базовый", price: 9900, tools: ["PowerPoint", "Keynote"] },
+  { id: 1,  category: "presentations", title: "Power of PowerPoint",                              desc: "Весь арсенал инструментов для создания убойно-красивых слайдов в PowerPoint от экспертов ведущей студии презентаций.",             duration: "8 ч",  tag: "с нуля",         price: 18900, popular: true,  tools: ["PowerPoint"] },
+  { id: 2,  category: "presentations", title: "Тройной удар по PowerPoint: цвета, шрифты, концепции", desc: "Визуализируйте диаграммы, огромные таблицы и многоступенчатые процессы понятно и красиво. Самые полезные фишки Excel в придачу.", duration: "6 ч",  tag: "углублённый",    price: 16900,                tools: ["PowerPoint", "Excel"] },
+  { id: 3,  category: "design",        title: "Шаблоны убойных слайдов",                           desc: "Сборник готовых визуальных решений на все случаи презентационной жизни. Стань ещё сильнее в дизайне и композиции слайдов!",         duration: "5 ч",  tag: "практика",       price: 14900,                tools: ["PowerPoint"] },
+  { id: 4,  category: "data",          title: "Графики и таблицы",                                  desc: "Визуализируйте диаграммы, огромные таблицы и многоступенчатые процессы. Освойте самые полезные фишки Excel.",                       duration: "5 ч",  tag: "визуализация",   price: 13900,                tools: ["PowerPoint", "Excel"] },
+  { id: 5,  category: "presentations", title: "Убойная Анимация",                                   desc: "Курс для тех, кто хочет усилить слайды с помощью анимации. Научитесь делать из своей презентации крутой видеоролик!",               duration: "4 ч",  tag: "углублённый",    price: 12900,                tools: ["PowerPoint"] },
+  { id: 6,  category: "ai",            title: "ИИ-креатор: создание контента с нейросетями",        desc: "Создавайте уникальный контент с помощью нейросетей и применяйте ИИ в работе.",                                                        duration: "6 ч",  tag: "ИИ-инструменты", price: 19900, popular: true,  tools: ["ChatGPT", "Midjourney", "Claude"] },
+  { id: 7,  category: "ai",            title: "Вайбкодинг для автоматизации рабочих задач",         desc: "Кратное ускорение рутинных процессов: сотрудники создают дашборды, порталы и AI-ассистентов сами — описывая задачу нейросети.",       duration: "8 ч",  tag: "автоматизация",  price: 24900, isNew: true,    tools: ["ChatGPT", "Claude", "Cursor"] },
+  { id: 8,  category: "ai",            title: "Очный мастер-класс по нейросетям",                   desc: "Корпоративное обучение для тех, кто хочет внедрить нейросети в работу команды и выполнять задачи быстрее и дешевле.",                 duration: "6 ч",  tag: "живой тренинг",  price: 22900,                tools: ["ChatGPT", "Claude"] },
+  { id: 9,  category: "ai",            title: "Нейросети для создания презентаций",                 desc: "От идеи до готовой презентации за час с помощью ИИ.",                                                                                   duration: "4 ч",  tag: "быстрый старт",  price: 14900, popular: true,  tools: ["ChatGPT", "Gamma", "Deepseek"] },
+  { id: 10, category: "ai",            title: "Практикум: Нейросети для менеджеров",                desc: "Научись оптимизировать и автоматизировать управленческие процессы с помощью нейросетей.",                                              duration: "5 ч",  tag: "практика",       price: 18900,                tools: ["ChatGPT", "NotebookLM"] },
+  { id: 11, category: "presentations", title: "Создание презентаций в Р7 Офис",                     desc: "Стильные, современные слайды в Р7-Презентациях — без сторонних сервисов. Подходит переходящим с PowerPoint на российское ПО.",         duration: "5 ч",  tag: "российское ПО",  price: 13900,                tools: ["Р7 Офис"] },
+  { id: 12, category: "data",          title: "Аналитика данных без боли",                          desc: "Превращайте цифры и отчёты в ясные инсайты, выделяйте главное и создавайте профессиональные дашборды.",                               duration: "8 ч",  tag: "аналитика",      price: 21900,                tools: ["Excel", "PowerPoint"] },
+  { id: 13, category: "data",          title: "Графики, таблицы, много всего на слайде",            desc: "Работа с большими объёмами данных, акценты на важном и красивое представление информации.",                                           duration: "5 ч",  tag: "визуализация",   price: 15900,                tools: ["PowerPoint", "Excel"] },
+  { id: 14, category: "design",        title: "Продвинутый дизайн презентаций",                     desc: "Подбирайте шрифты под тематику слайдов, применяйте цвет и форму для мощной визуальной концепции.",                                   duration: "6 ч",  tag: "углублённый",    price: 17900,                tools: ["PowerPoint"] },
+  { id: 15, category: "presentations", title: "Основы дизайна презентаций",                         desc: "Делайте слайды выше среднего при помощи инструментов PowerPoint. Подходит начинающим и продолжающим.",                                duration: "5 ч",  tag: "с нуля",         price: 12900,                tools: ["PowerPoint"] },
+  { id: 16, category: "design",        title: "Шаблоны убойных слайдов для бизнеса",                desc: "Создаём 76+ готовых шаблонов для быстрого создания слайдов: работаем с большим объёмом информации и делаем красиво.",                  duration: "7 ч",  tag: "для команды",    price: 19900,                tools: ["PowerPoint"] },
+  { id: 17, category: "data",          title: "Excel для бизнеса",                                  desc: "Управляйтесь с данными на уровне специалиста, делайте красивые графики и таблицы в связке с Excel.",                                  duration: "6 ч",  tag: "аналитика",      price: 16900,                tools: ["Excel"] },
+  { id: 18, category: "presentations", title: "Убойная анимация для бизнеса",                       desc: "Усильте слайды с помощью качественной анимации и сделайте презентацию запоминающейся.",                                               duration: "4 ч",  tag: "практика",       price: 14900,                tools: ["PowerPoint"] },
+  { id: 19, category: "design",        title: "Photoshop для бизнеса",                              desc: "Когда PowerPoint не хватает. Базовая ретушь и создание картинок с нуля.",                                                               duration: "6 ч",  tag: "углублённый",    price: 17900,                tools: ["Photoshop"] },
+  { id: 20, category: "ai",            title: "Нейросети для бизнеса",                              desc: "Оптимизируйте рабочие процессы с помощью ИИ и делегируйте рутинные задачи нейросетям.",                                              duration: "6 ч",  tag: "автоматизация",  price: 18900,                tools: ["ChatGPT", "Claude"] },
+  { id: 21, category: "design",        title: "Дизайн в Figma для бизнеса",                         desc: "Осваивайте Figma с нуля и делайте эффектные слайды за пару минут. Всё, что необходимо в работе.",                                     duration: "7 ч",  tag: "с нуля",         price: 19900,                tools: ["Figma"] },
+  { id: 22, category: "oratory",       title: "Ораторское мастерство для бизнеса",                  desc: "Выступайте уверенно перед клиентами, партнёрами и инвесторами: техники убеждения и управления вниманием аудитории.",                 duration: "6 ч",  tag: "выступления",    price: 21900, popular: true,  tools: ["Публичные выступления"] },
+  { id: 23, category: "presentations", title: "Структура презентации и сторителлинг",               desc: "Прокачиваем навыки создания структуры, сторителлинга, работы с контентом и смыслом.",                                                  duration: "5 ч",  tag: "с нуля",         price: 14900,                tools: ["PowerPoint", "Keynote"] },
+  { id: 24, category: "ai",            title: "Нейросети для маркетинга и контента",                desc: "Автоматизируйте маркетинговые процессы и повышайте эффективность кампаний с помощью нейросетей.",                                      duration: "6 ч",  tag: "ИИ-инструменты", price: 19900, isNew: true,    tools: ["ChatGPT", "Midjourney", "Claude"] },
+  { id: 25, category: "presentations", title: "Слайды для выступления. Экспресс",                   desc: "Пошаговая инструкция по подготовке презентации и выступления на уровне BigTech с Bonnie&Slide.",                                       duration: "3 ч",  tag: "быстрый старт",  price: 9900,                 tools: ["PowerPoint", "Keynote"] },
 ];
 
 const TASKS: Task[] = [
@@ -151,10 +162,19 @@ const CATEGORIES: { key: Category | "all"; label: string; icon: string }[] = [
   { key: "oratory", label: "Ораторика", icon: "Mic" },
 ];
 
-const LEVEL_COLORS: Record<string, string> = {
-  "базовый": "border-blue-500/40 text-blue-400",
-  "продвинутый": "border-purple-500/40 text-purple-400",
-  "для бизнеса": "border-vibe-red/40 text-vibe-red",
+const TAG_COLORS: Record<string, string> = {
+  "с нуля":         "bg-blue-950 text-blue-400 border-blue-500/30",
+  "углублённый":    "bg-purple-950 text-purple-400 border-purple-500/30",
+  "практика":       "bg-amber-950 text-amber-400 border-amber-500/30",
+  "быстрый старт":  "bg-green-950 text-green-400 border-green-500/30",
+  "для команды":    "bg-teal-950 text-teal-400 border-teal-500/30",
+  "ИИ-инструменты": "bg-pink-950 text-pink-400 border-pink-500/30",
+  "российское ПО":  "bg-red-950 text-red-400 border-red-500/30",
+  "живой тренинг":  "bg-orange-950 text-orange-400 border-orange-500/30",
+  "аналитика":      "bg-cyan-950 text-cyan-400 border-cyan-500/30",
+  "визуализация":   "bg-indigo-950 text-indigo-400 border-indigo-500/30",
+  "автоматизация":  "bg-violet-950 text-violet-400 border-violet-500/30",
+  "выступления":    "bg-rose-950 text-rose-400 border-rose-500/30",
 };
 
 function fmt(n: number) {
@@ -512,7 +532,7 @@ export default function B2BCourses() {
                 <div
                   key={course.id}
                   onClick={() => toggle(course.id)}
-                  className={`relative flex flex-col p-5 border cursor-pointer transition-all group ${
+                  className={`relative flex flex-col pb-4 border cursor-pointer transition-all group overflow-hidden ${
                     isSelected
                       ? "border-vibe-red bg-vibe-red/5"
                       : isRecommended
@@ -536,15 +556,38 @@ export default function B2BCourses() {
                   </div>
 
                   {/* Checkbox */}
-                  <div className={`absolute top-3 left-3 w-5 h-5 border flex items-center justify-center transition-colors ${
-                    isSelected ? "bg-vibe-red border-vibe-red" : "border-vibe-dark3 bg-vibe-dark group-hover:border-vibe-red/50"
+                  <div className={`absolute top-3 left-3 z-10 w-5 h-5 border flex items-center justify-center transition-colors ${
+                    isSelected ? "bg-vibe-red border-vibe-red" : "border-vibe-dark3 bg-vibe-dark/80 group-hover:border-vibe-red/50"
                   }`}>
                     {isSelected && <Icon name="Check" size={12} className="text-white" />}
                   </div>
 
-                  <div className="mt-5 flex-1">
-                    <span className={`inline-block text-xs border px-2 py-0.5 font-oswald uppercase mb-3 ${LEVEL_COLORS[course.level]}`}>
-                      {course.level}
+                  {/* Category image */}
+                  <div className="relative w-full h-32 overflow-hidden mb-4 mt-6">
+                    <img
+                      src={CAT_IMAGES[course.category]}
+                      alt={course.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-vibe-dark/90 via-vibe-dark/20 to-transparent" />
+                    {isRecommended && !isSelected && (
+                      <div className="absolute bottom-2 left-2 flex items-center gap-1 bg-vibe-red/90 px-2 py-0.5">
+                        <Icon name="Star" size={10} className="text-white" />
+                        <span className="text-white text-xs font-oswald uppercase">Рекомендован</span>
+                      </div>
+                    )}
+                    {isSelected && (
+                      <div className="absolute inset-0 bg-vibe-red/20 flex items-center justify-center">
+                        <div className="w-10 h-10 bg-vibe-red rounded-full flex items-center justify-center">
+                          <Icon name="Check" size={20} className="text-white" />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="flex-1 px-4">
+                    <span className={`inline-block text-xs border px-2 py-0.5 font-oswald uppercase mb-3 ${TAG_COLORS[course.tag] ?? "border-vibe-dark3 text-vibe-muted"}`}>
+                      {course.tag}
                     </span>
                     <h3 className={`font-oswald text-sm leading-tight mb-2 transition-colors ${
                       isSelected ? "text-vibe-red" : "text-vibe-light group-hover:text-vibe-red"
@@ -561,7 +604,7 @@ export default function B2BCourses() {
                     )}
                   </div>
 
-                  <div className="flex items-center justify-between pt-3 border-t border-vibe-dark3">
+                  <div className="flex items-center justify-between pt-3 border-t border-vibe-dark3 px-4">
                     <div className="flex items-center gap-1 text-vibe-muted text-xs">
                       <Icon name="Clock" size={11} />
                       {course.duration}
