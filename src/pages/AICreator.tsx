@@ -148,9 +148,60 @@ const FAQS = [
 
 // ── COMPONENT ──────────────────────────────────────────────────────────────────
 
+const CONSENT_PD_URL = "https://bonnieandslide.com/wp-content/themes/bns/assets/documents/%D1%81%D0%BE%D0%B3%D0%BB%D0%B0%D1%81%D0%B8%D0%B5_%D0%BD%D0%B0_%D0%BE%D0%B1%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D1%83_%D0%BF%D0%B5%D1%80%D1%81%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85_bonnieandslide.pdf";
+const PRIVACY_URL = "https://bonnieandslide.com/wp-content/themes/bns/assets/documents/%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%BE%D0%B5_%D1%81%D0%BE%D0%B3%D0%BB%D0%B0%D1%88%D0%B5%D0%BD%D0%B8%D0%B5_bonnieandslide.pdf";
+
+function FormCheckboxes({
+  pd, setPd, privacy, setPrivacy, ads, setAds,
+}: {
+  pd: boolean; setPd: (v: boolean) => void;
+  privacy: boolean; setPrivacy: (v: boolean) => void;
+  ads: boolean; setAds: (v: boolean) => void;
+}) {
+  return (
+    <div className="space-y-3 mt-4">
+      <label className="flex items-start gap-3 cursor-pointer group">
+        <input type="checkbox" checked={pd} onChange={e => setPd(e.target.checked)} required
+          className="mt-0.5 w-4 h-4 flex-shrink-0 accent-vibe-red" />
+        <span className="text-vibe-muted text-xs leading-relaxed">
+          Я согласен(а) на{" "}
+          <a href={CONSENT_PD_URL} target="_blank" rel="noopener noreferrer" className="text-vibe-red underline hover:no-underline">
+            обработку персональных данных
+          </a>{" "}*
+        </span>
+      </label>
+      <label className="flex items-start gap-3 cursor-pointer group">
+        <input type="checkbox" checked={privacy} onChange={e => setPrivacy(e.target.checked)} required
+          className="mt-0.5 w-4 h-4 flex-shrink-0 accent-vibe-red" />
+        <span className="text-vibe-muted text-xs leading-relaxed">
+          Я принимаю{" "}
+          <a href={PRIVACY_URL} target="_blank" rel="noopener noreferrer" className="text-vibe-red underline hover:no-underline">
+            политику конфиденциальности
+          </a>{" "}*
+        </span>
+      </label>
+      <label className="flex items-start gap-3 cursor-pointer group">
+        <input type="checkbox" checked={ads} onChange={e => setAds(e.target.checked)}
+          className="mt-0.5 w-4 h-4 flex-shrink-0 accent-vibe-red" />
+        <span className="text-vibe-muted text-xs leading-relaxed">
+          Согласен(а) получать рекламно-информационные материалы
+        </span>
+      </label>
+    </div>
+  );
+}
+
 export default function AICreator() {
   useScrollReveal();
   const [form, setForm] = useState({ name: "", email: "", phone: "" });
+  const [formPd, setFormPd] = useState(false);
+  const [formPrivacy, setFormPrivacy] = useState(false);
+  const [formAds, setFormAds] = useState(false);
+  const [popupOpen, setPopupOpen] = useState(false);
+  const [popupForm, setPopupForm] = useState({ name: "", email: "", phone: "" });
+  const [popupPd, setPopupPd] = useState(false);
+  const [popupPrivacy, setPopupPrivacy] = useState(false);
+  const [popupAds, setPopupAds] = useState(false);
   const buyRef = useRef<HTMLElement>(null);
 
   function handleSubmit(e: React.FormEvent) {
@@ -158,8 +209,58 @@ export default function AICreator() {
     alert("Заявка принята! Мы свяжемся с вами.");
   }
 
+  function handlePopupSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    alert("Заявка принята! Мы свяжемся с вами.");
+    setPopupOpen(false);
+  }
+
   return (
     <div className="min-h-screen bg-vibe-dark font-golos overflow-x-hidden">
+
+      {/* ── POPUP ── */}
+      {popupOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          onClick={(e) => { if (e.target === e.currentTarget) setPopupOpen(false); }}>
+          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+          <div className="relative z-10 w-full max-w-md bg-vibe-dark2 border border-vibe-dark3 p-8">
+            <button onClick={() => setPopupOpen(false)}
+              className="absolute top-4 right-4 text-vibe-muted hover:text-vibe-light transition-colors">
+              <Icon name="X" size={20} />
+            </button>
+            <div className="mb-6">
+              <div className="text-vibe-muted text-xs font-oswald uppercase tracking-widest mb-2">Старт</div>
+              <h3 className="font-oswald text-3xl text-vibe-light leading-tight">НАЧНИ ПРЯМО СЕЙЧАС</h3>
+              <p className="text-vibe-muted text-sm mt-2">Доступ открывается сразу после оплаты</p>
+            </div>
+            <form onSubmit={handlePopupSubmit} className="space-y-3">
+              <div>
+                <label className="text-vibe-muted text-xs font-oswald uppercase tracking-wide block mb-1.5">Имя</label>
+                <input type="text" placeholder="Как тебя зовут?" required
+                  value={popupForm.name} onChange={e => setPopupForm(f => ({ ...f, name: e.target.value }))}
+                  className="w-full bg-vibe-dark border border-vibe-dark3 text-vibe-light placeholder-vibe-muted/50 px-4 py-3 text-sm focus:outline-none focus:border-vibe-red transition-colors" />
+              </div>
+              <div>
+                <label className="text-vibe-muted text-xs font-oswald uppercase tracking-wide block mb-1.5">Email</label>
+                <input type="email" placeholder="твой@email.ru" required
+                  value={popupForm.email} onChange={e => setPopupForm(f => ({ ...f, email: e.target.value }))}
+                  className="w-full bg-vibe-dark border border-vibe-dark3 text-vibe-light placeholder-vibe-muted/50 px-4 py-3 text-sm focus:outline-none focus:border-vibe-red transition-colors" />
+              </div>
+              <div>
+                <label className="text-vibe-muted text-xs font-oswald uppercase tracking-wide block mb-1.5">Телефон</label>
+                <input type="tel" placeholder="+7 ..."
+                  value={popupForm.phone} onChange={e => setPopupForm(f => ({ ...f, phone: e.target.value }))}
+                  className="w-full bg-vibe-dark border border-vibe-dark3 text-vibe-light placeholder-vibe-muted/50 px-4 py-3 text-sm focus:outline-none focus:border-vibe-red transition-colors" />
+              </div>
+              <FormCheckboxes pd={popupPd} setPd={setPopupPd} privacy={popupPrivacy} setPrivacy={setPopupPrivacy} ads={popupAds} setAds={setPopupAds} />
+              <button type="submit"
+                className="w-full bg-vibe-red text-white font-oswald uppercase tracking-widest py-4 text-base hover:bg-red-700 transition-all rounded-full mt-2">
+                Начать за 490 ₽ <span className="line-through opacity-60">990 ₽</span> →
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* ── HEADER ── */}
       <header className="sticky top-0 z-50 bg-vibe-dark/95 backdrop-blur-sm border-b border-vibe-dark3">
@@ -175,10 +276,10 @@ export default function AICreator() {
             <a href="#student-works" className="hover:text-vibe-light transition-colors">Работы учеников</a>
             <a href="#buy" className="hover:text-vibe-light transition-colors">Купить</a>
           </div>
-          <a href="#buy"
+          <button onClick={() => setPopupOpen(true)}
             className="bg-vibe-red text-white font-oswald uppercase tracking-widest text-xs px-5 py-2.5 hover:bg-red-700 transition-colors rounded-full flex-shrink-0">
             Начать за 490 ₽
-          </a>
+          </button>
         </div>
       </header>
 
@@ -195,9 +296,9 @@ export default function AICreator() {
           {/* Left */}
           <div>
             <h1 className="font-oswald text-5xl md:text-7xl leading-[0.9] text-vibe-light mb-6">
-              КАК СТАВИТЬ<br />ЗАДАЧИ<br />
+              КАК СТАВИТЬ ЗАДАЧИ<br />
               <span className="text-vibe-red">НЕЙРОСЕТЯМ</span><br />
-              И ПОЛУЧАТЬ<br />ВАУ-РЕЗУЛЬТАТ
+              И ПОЛУЧАТЬ ВАУ-РЕЗУЛЬТАТ
             </h1>
             <p className="text-vibe-muted text-base mb-8 leading-relaxed max-w-md">
               4 урока о том, как писать промпты и собирать контент, который выглядит профессионально
@@ -208,10 +309,10 @@ export default function AICreator() {
               <span className="font-oswald text-2xl text-vibe-muted line-through">990 ₽</span>
               <span className="text-vibe-muted text-xs">разовый доступ навсегда</span>
             </div>
-            <a href="#buy"
+            <button onClick={() => setPopupOpen(true)}
               className="inline-flex items-center gap-2 bg-vibe-red text-white font-oswald uppercase tracking-widest px-8 py-4 text-lg hover:bg-red-700 transition-all animate-pulse-red rounded-full mb-4">
-              Начать →
-            </a>
+              Начать за 490 ₽ <span className="line-through opacity-60 text-base">990 ₽</span> →
+            </button>
             <div className="flex items-center gap-2 text-vibe-muted text-xs">
               <span className="w-2 h-2 bg-green-500 rounded-full" />
               Доступ открывается <strong className="text-vibe-light ml-1">сразу после оплаты</strong>
@@ -219,20 +320,21 @@ export default function AICreator() {
           </div>
 
           {/* Right — benefits */}
-          <div className="grid grid-cols-1 gap-3">
+          <div className="grid grid-cols-2 gap-3">
             {[
-              { icon: "Zap",    title: "Результат сразу",  desc: "Сделаешь первый контент уже в первом уроке" },
-              { icon: "User",   title: "Без опыта",        desc: "Подойдёт, даже если ты никогда не работал с нейросетями" },
-              { icon: "Target", title: "Практика",         desc: "Не смотришь — а делаешь" },
-              { icon: "Clock",  title: "Быстро",           desc: "60–90 минут на весь формат" },
+              { icon: "Zap",    title: "Результат сразу",  desc: "Сделаешь первый контент уже в первом уроке", gradient: "from-vibe-red/20 via-vibe-dark3 to-vibe-dark3" },
+              { icon: "User",   title: "Без опыта",        desc: "Подойдёт, даже если ты никогда не работал с нейросетями", gradient: "from-purple-900/30 via-vibe-dark3 to-vibe-dark3" },
+              { icon: "Target", title: "Практика",         desc: "Не смотришь — а делаешь", gradient: "from-blue-900/30 via-vibe-dark3 to-vibe-dark3" },
+              { icon: "Clock",  title: "Быстро",           desc: "60–90 минут на весь формат", gradient: "from-amber-900/30 via-vibe-dark3 to-vibe-dark3" },
             ].map((b) => (
-              <div key={b.title} className="flex items-start gap-4 bg-vibe-dark3/60 border border-vibe-dark3 p-4 hover:border-vibe-red/30 transition-colors">
-                <div className="w-8 h-8 bg-vibe-red/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Icon name={b.icon} fallback="Star" size={15} className="text-vibe-red" />
+              <div key={b.title}
+                className={`relative flex flex-col justify-between p-6 border border-vibe-dark3 hover:border-vibe-red/40 transition-colors overflow-hidden min-h-[clamp(180px,30vh,260px)] bg-gradient-to-br ${b.gradient}`}>
+                <div className="w-10 h-10 bg-vibe-red/10 border border-vibe-red/20 flex items-center justify-center mb-4">
+                  <Icon name={b.icon} fallback="Star" size={18} className="text-vibe-red" />
                 </div>
                 <div>
-                  <div className="font-oswald text-vibe-light text-sm mb-0.5">{b.title}</div>
-                  <div className="text-vibe-muted text-xs leading-relaxed">{b.desc}</div>
+                  <div className="font-oswald text-vibe-light text-xl md:text-2xl mb-2 leading-tight">{b.title}</div>
+                  <div className="text-vibe-muted text-sm leading-relaxed">{b.desc}</div>
                 </div>
               </div>
             ))}
@@ -509,15 +611,12 @@ export default function AICreator() {
                 className="w-full bg-vibe-dark2 border border-vibe-dark3 text-vibe-light placeholder-vibe-muted/50 px-4 py-3 text-sm focus:outline-none focus:border-vibe-red transition-colors"
               />
             </div>
+            <FormCheckboxes pd={formPd} setPd={setFormPd} privacy={formPrivacy} setPrivacy={setFormPrivacy} ads={formAds} setAds={setFormAds} />
             <button type="submit"
-              className="w-full bg-vibe-red text-white font-oswald uppercase tracking-widest py-5 text-lg hover:bg-red-700 transition-all animate-pulse-red rounded-full">
-              Начать за 490 ₽ →
+              className="w-full bg-vibe-red text-white font-oswald uppercase tracking-widest py-5 text-lg hover:bg-red-700 transition-all animate-pulse-red rounded-full mt-2">
+              Начать за 490 ₽ <span className="line-through opacity-60 text-base">990 ₽</span> →
             </button>
           </form>
-
-          <p className="text-vibe-muted/60 text-xs leading-relaxed">
-            Нажимая кнопку, ты соглашаешься с условиями публичной оферты и политикой конфиденциальности.
-          </p>
         </div>
       </section>
 
@@ -546,10 +645,10 @@ export default function AICreator() {
         <div className="relative z-10 max-w-2xl mx-auto px-5 text-center">
           <h2 className="font-oswald text-4xl md:text-6xl text-white mb-4">ПОПРОБУЙ СЕЙЧАС</h2>
           <p className="text-white/80 mb-8">4 урока, первый результат, доступ навсегда — за 490 ₽</p>
-          <a href="#buy"
+          <button onClick={() => setPopupOpen(true)}
             className="inline-flex items-center gap-2 bg-white text-vibe-red font-oswald uppercase tracking-widest px-10 py-4 text-lg hover:bg-gray-100 transition-colors rounded-full">
-            Начать →
-          </a>
+            Начать за 490 ₽ →
+          </button>
         </div>
       </section>
 
