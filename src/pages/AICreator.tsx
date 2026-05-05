@@ -265,7 +265,7 @@ export default function AICreator() {
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4"
           onClick={(e) => { if (e.target === e.currentTarget) setPopupOpen(false); }}>
           <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
-          <div className="relative z-10 w-full max-w-md bg-vibe-dark2 border border-vibe-dark3 p-8">
+          <div className="relative z-10 w-full max-w-md bg-vibe-dark2 border border-vibe-dark3 p-8 rounded-2xl">
             <button onClick={() => setPopupOpen(false)}
               className="absolute top-4 right-4 text-vibe-muted hover:text-vibe-light transition-colors">
               <Icon name="X" size={20} />
@@ -280,19 +280,19 @@ export default function AICreator() {
                 <label className="text-vibe-muted text-xs font-oswald uppercase tracking-wide block mb-1.5">Имя</label>
                 <input type="text" placeholder="Как тебя зовут?" required
                   value={popupForm.name} onChange={e => setPopupForm(f => ({ ...f, name: e.target.value }))}
-                  className="w-full bg-vibe-dark border border-vibe-dark3 text-vibe-light placeholder-vibe-muted/50 px-4 py-3 text-sm focus:outline-none focus:border-vibe-red transition-colors" />
+                  className="w-full bg-vibe-dark border border-vibe-dark3 text-vibe-light placeholder-vibe-muted/50 px-4 py-3 text-sm focus:outline-none focus:border-vibe-red transition-colors rounded-lg" />
               </div>
               <div>
                 <label className="text-vibe-muted text-xs font-oswald uppercase tracking-wide block mb-1.5">Email</label>
                 <input type="email" placeholder="твой@email.ru" required
                   value={popupForm.email} onChange={e => setPopupForm(f => ({ ...f, email: e.target.value }))}
-                  className="w-full bg-vibe-dark border border-vibe-dark3 text-vibe-light placeholder-vibe-muted/50 px-4 py-3 text-sm focus:outline-none focus:border-vibe-red transition-colors" />
+                  className="w-full bg-vibe-dark border border-vibe-dark3 text-vibe-light placeholder-vibe-muted/50 px-4 py-3 text-sm focus:outline-none focus:border-vibe-red transition-colors rounded-lg" />
               </div>
               <div>
                 <label className="text-vibe-muted text-xs font-oswald uppercase tracking-wide block mb-1.5">Телефон</label>
                 <input type="tel" placeholder="+7 ..."
                   value={popupForm.phone} onChange={e => setPopupForm(f => ({ ...f, phone: e.target.value }))}
-                  className="w-full bg-vibe-dark border border-vibe-dark3 text-vibe-light placeholder-vibe-muted/50 px-4 py-3 text-sm focus:outline-none focus:border-vibe-red transition-colors" />
+                  className="w-full bg-vibe-dark border border-vibe-dark3 text-vibe-light placeholder-vibe-muted/50 px-4 py-3 text-sm focus:outline-none focus:border-vibe-red transition-colors rounded-lg" />
               </div>
               <FormCheckboxes pd={popupPd} setPd={setPopupPd} privacy={popupPrivacy} setPrivacy={setPopupPrivacy} ads={popupAds} setAds={setPopupAds} />
               <button type="submit"
@@ -327,55 +327,52 @@ export default function AICreator() {
 
       {/* ── HERO ── */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* bg grid */}
-        <div className="absolute inset-0 opacity-[0.03]"
-          style={{ backgroundImage: "repeating-linear-gradient(0deg,#fff 0,#fff 1px,transparent 1px,transparent 60px),repeating-linear-gradient(90deg,#fff 0,#fff 1px,transparent 1px,transparent 60px)" }} />
-        {/* glow */}
-        <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-vibe-red/15 rounded-full blur-[140px] pointer-events-none" />
+        {/* purple glow top-right */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-[120px] pointer-events-none"
+          style={{ background: "radial-gradient(circle, rgba(120,40,180,0.35) 0%, transparent 70%)" }} />
         <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-vibe-dark to-transparent" />
 
-        <div className="relative z-10 max-w-6xl mx-auto px-5 py-28 grid md:grid-cols-2 gap-12 items-center">
+        <div className="relative z-10 max-w-6xl mx-auto px-5 py-28 grid md:grid-cols-2 gap-16 items-center">
           {/* Left */}
           <div>
-            <h1 className="font-oswald text-5xl md:text-7xl leading-[0.9] text-vibe-light mb-6">
+            <h1 className="font-oswald text-5xl md:text-7xl leading-[0.88] text-vibe-light mb-6">
               КАК СТАВИТЬ ЗАДАЧИ<br />
               <span className="text-vibe-red">НЕЙРОСЕТЯМ</span><br />
               И ПОЛУЧАТЬ ВАУ-РЕЗУЛЬТАТ
             </h1>
-            <p className="text-vibe-muted text-base mb-8 leading-relaxed max-w-md">
+            <p className="text-vibe-muted text-base mb-6 leading-relaxed max-w-md">
               4 урока о том, как писать промпты и собирать контент, который выглядит профессионально
             </p>
+            <div className="flex items-baseline gap-3 mb-6">
+              <span className="font-oswald text-4xl text-vibe-light font-bold">490 ₽</span>
+              <span className="font-oswald text-xl text-vibe-muted line-through">990 ₽</span>
+              <span className="text-vibe-muted text-xs">разовый доступ навсегда</span>
+            </div>
             <button onClick={() => setPopupOpen(true)}
-              className="inline-flex items-center gap-2 bg-vibe-red text-white font-oswald uppercase tracking-widest px-8 py-4 text-lg hover:bg-red-700 transition-all animate-pulse-red rounded-full mb-4">
-              Начать за 490 ₽ <span className="line-through opacity-60 text-base">990 ₽</span> →
+              className="inline-flex items-center gap-2 bg-vibe-red text-white font-oswald uppercase tracking-wide px-10 py-4 text-base hover:opacity-90 transition-all animate-pulse-red rounded-full mb-4">
+              Начать →
             </button>
-            <div className="flex flex-col gap-1.5">
-              <div className="flex items-center gap-2 text-vibe-muted text-xs">
-                <span className="w-2 h-2 bg-green-500 rounded-full" />
-                Доступ открывается <strong className="text-vibe-light ml-1">сразу после оплаты</strong>
-              </div>
-              <div className="flex items-center gap-2 text-vibe-muted text-xs">
-                <span className="w-2 h-2 bg-vibe-red/60 rounded-full" />
-                Разовый платёж — <strong className="text-vibe-light ml-1">доступ навсегда</strong>
-              </div>
+            <div className="flex items-center gap-2 text-vibe-muted text-xs">
+              <span className="w-2 h-2 bg-green-500 rounded-full" />
+              Доступ открывается <strong className="text-vibe-light ml-1">сразу после оплаты</strong>
             </div>
           </div>
 
           {/* Right — benefits */}
-          <div className="grid grid-cols-2 gap-3">
+          <div className="flex flex-col gap-3">
             {[
-              { icon: "Zap",    title: "Результат сразу",  desc: "Сделаешь первый контент уже в первом уроке", gradient: "from-vibe-red/20 via-vibe-dark3 to-vibe-dark3" },
-              { icon: "User",   title: "Без опыта",        desc: "Подойдёт, даже если ты никогда не работал с нейросетями", gradient: "from-purple-900/30 via-vibe-dark3 to-vibe-dark3" },
-              { icon: "Target", title: "Практика",         desc: "Не смотришь — а делаешь", gradient: "from-blue-900/30 via-vibe-dark3 to-vibe-dark3" },
-              { icon: "Clock",  title: "Быстро",           desc: "60–90 минут на весь формат", gradient: "from-amber-900/30 via-vibe-dark3 to-vibe-dark3" },
+              { icon: "Zap",    title: "Результат сразу",  desc: "Сделаешь первый контент уже в первом уроке" },
+              { icon: "User",   title: "Без опыта",        desc: "Подойдёт, даже если ты никогда не работал с нейросетями" },
+              { icon: "PenLine", title: "Практика",        desc: "Не смотришь — а делаешь" },
+              { icon: "Clock",  title: "Быстро",           desc: "60–90 минут на весь формат" },
             ].map((b) => (
               <div key={b.title}
-                className={`relative flex flex-col justify-between p-6 border border-vibe-dark3 hover:border-vibe-red/40 transition-colors overflow-hidden min-h-[clamp(180px,30vh,260px)] bg-gradient-to-br ${b.gradient}`}>
-                <div className="w-10 h-10 bg-vibe-red/10 border border-vibe-red/20 flex items-center justify-center mb-4">
+                className="flex items-center gap-4 bg-vibe-dark3/80 rounded-2xl px-5 py-4 hover:bg-vibe-dark3 transition-colors">
+                <div className="w-10 h-10 bg-vibe-red/15 rounded-xl flex items-center justify-center flex-shrink-0">
                   <Icon name={b.icon} fallback="Star" size={18} className="text-vibe-red" />
                 </div>
                 <div>
-                  <div className="font-oswald text-vibe-light text-xl md:text-2xl mb-2 leading-tight">{b.title}</div>
+                  <div className="font-oswald text-vibe-light text-base leading-tight">{b.title}</div>
                   <div className="text-vibe-muted text-sm leading-relaxed">{b.desc}</div>
                 </div>
               </div>
@@ -394,7 +391,7 @@ export default function AICreator() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {MYTHS.map((m, i) => (
-              <div key={i} className="bg-vibe-dark3 border border-vibe-dark3 p-6 hover:border-vibe-red/20 transition-colors"
+              <div key={i} className="bg-vibe-dark3 border border-vibe-dark3 p-6 hover:border-vibe-red/20 transition-colors rounded-xl"
                 style={{ transitionDelay: `${i * 80}ms` }}>
                 <div className="flex items-start gap-3 mb-4">
                   <div className="w-6 h-6 rounded-full bg-red-900/40 border border-red-500/30 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -436,7 +433,7 @@ export default function AICreator() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {FOR_WHO.map((f, i) => (
-              <div key={i} className="bg-vibe-dark3 border border-vibe-dark3 p-5 hover:border-vibe-red/30 transition-colors group"
+              <div key={i} className="bg-vibe-dark3 border border-vibe-dark3 p-5 hover:border-vibe-red/30 transition-colors group rounded-xl"
                 style={{ transitionDelay: `${i * 80}ms` }}>
                 <div className="w-9 h-9 bg-vibe-red/10 flex items-center justify-center mb-3">
                   <Icon name={f.icon} fallback="User" size={16} className="text-vibe-red" />
@@ -456,7 +453,7 @@ export default function AICreator() {
           </div>
 
           {/* CTA block */}
-          <div className="mt-10 flex flex-col md:flex-row items-center justify-between gap-6 bg-gradient-to-r from-vibe-red/20 to-vibe-dark3 border border-vibe-red/30 p-8">
+          <div className="mt-10 flex flex-col md:flex-row items-center justify-between gap-6 bg-gradient-to-r from-vibe-red/20 to-vibe-dark3 border border-vibe-red/30 p-8 rounded-2xl">
             <div>
               <p className="font-oswald text-vibe-light text-2xl md:text-3xl leading-tight mb-1">
                 Нейросети уже меняют рынок — начни использовать их первым.
@@ -492,7 +489,7 @@ export default function AICreator() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {RESULTS.map((r, i) => (
               <div key={i}
-                className="relative bg-vibe-dark3 border border-vibe-dark3 p-7 hover:border-vibe-red/40 transition-colors group overflow-hidden"
+                className="relative bg-vibe-dark3 border border-vibe-dark3 p-7 hover:border-vibe-red/40 transition-colors group overflow-hidden rounded-xl"
                 style={{ transitionDelay: `${i * 70}ms` }}>
                 <span className="absolute top-4 right-5 font-oswald text-6xl text-vibe-light/5 group-hover:text-vibe-red/10 transition-colors select-none">
                   {String(i + 1).padStart(2, "0")}
@@ -560,7 +557,7 @@ export default function AICreator() {
                 { icon: "CheckCircle", text: "Поймёшь, как управлять нейросетями", sub: "Освоишь логику промптов и перестанешь тыкать наугад." },
                 { icon: "CheckCircle", text: "Получишь базу для роста", sub: "Этот курс — первый шаг к системной, уверенной работе с ИИ." },
               ].map((item, i) => (
-                <div key={i} className="flex items-start gap-4 p-5 bg-vibe-dark3 border border-vibe-dark3 hover:border-vibe-red/30 transition-colors">
+                <div key={i} className="flex items-start gap-4 p-5 bg-vibe-dark3 border border-vibe-dark3 hover:border-vibe-red/30 transition-colors rounded-xl">
                   <Icon name={item.icon} fallback="Check" size={18} className="text-vibe-red flex-shrink-0 mt-0.5" />
                   <div>
                     <div className="font-oswald text-vibe-light text-sm mb-1">{item.text}</div>
@@ -576,7 +573,7 @@ export default function AICreator() {
       {/* ── CTA AFTER FIRST STEP ── */}
       <section className="py-16 bg-vibe-dark2 section-appear">
         <div className="max-w-6xl mx-auto px-5">
-          <div className="relative overflow-hidden border border-vibe-red/40 p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="relative overflow-hidden border border-vibe-red/40 p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8 rounded-2xl">
             <div className="absolute inset-0 opacity-[0.04]"
               style={{ backgroundImage: "repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(255,255,255,.3) 20px,rgba(255,255,255,.3) 21px)" }} />
             <div className="absolute top-0 left-0 w-64 h-64 bg-vibe-red/10 rounded-full blur-[80px] pointer-events-none" />
@@ -627,7 +624,7 @@ export default function AICreator() {
               ].map((img, i) => (
                 <div
                   key={i}
-                  className="flex-shrink-0 w-[calc(33.333%-11px)] aspect-square overflow-hidden border border-vibe-dark3 hover:border-vibe-red/40 transition-colors group"
+                  className="flex-shrink-0 w-[calc(33.333%-11px)] aspect-square overflow-hidden border border-vibe-dark3 hover:border-vibe-red/40 transition-colors group rounded-xl"
                 >
                   <img
                     src={img.url}
@@ -640,13 +637,13 @@ export default function AICreator() {
             {/* scroll buttons */}
             <button
               onClick={() => { const el = document.getElementById("student-gallery"); if (el) el.scrollBy({ left: -400, behavior: "smooth" }); }}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-10 h-10 bg-vibe-dark3 border border-vibe-dark3 hover:border-vibe-red/40 flex items-center justify-center text-vibe-light hover:text-vibe-red transition-colors hidden md:flex"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-10 h-10 bg-vibe-dark3 border border-vibe-dark3 hover:border-vibe-red/40 flex items-center justify-center text-vibe-light hover:text-vibe-red transition-colors hidden md:flex rounded-xl"
             >
               <Icon name="ChevronLeft" size={18} />
             </button>
             <button
               onClick={() => { const el = document.getElementById("student-gallery"); if (el) el.scrollBy({ left: 400, behavior: "smooth" }); }}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-10 h-10 bg-vibe-dark3 border border-vibe-dark3 hover:border-vibe-red/40 flex items-center justify-center text-vibe-light hover:text-vibe-red transition-colors hidden md:flex"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-10 h-10 bg-vibe-dark3 border border-vibe-dark3 hover:border-vibe-red/40 flex items-center justify-center text-vibe-light hover:text-vibe-red transition-colors hidden md:flex rounded-xl"
             >
               <Icon name="ChevronRight" size={18} />
             </button>
@@ -658,7 +655,7 @@ export default function AICreator() {
       <section id="buy" ref={buyRef as React.RefObject<HTMLElement>} className="py-24 bg-vibe-dark section-appear">
         <div className="max-w-xl mx-auto px-5 text-center">
           {/* Label */}
-          <div className="inline-block border border-vibe-red/40 text-vibe-red text-xs font-oswald uppercase tracking-widest px-3 py-1.5 mb-6">
+          <div className="inline-block border border-vibe-red/40 text-vibe-red text-xs font-oswald uppercase tracking-widest px-3 py-1.5 mb-6 rounded-full">
             Старт
           </div>
           <h2 className="font-oswald text-5xl md:text-7xl text-vibe-light leading-none mb-4">
@@ -688,7 +685,7 @@ export default function AICreator() {
               <input
                 type="text" placeholder="Как тебя зовут?"
                 value={form.name} onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-                className="w-full bg-vibe-dark2 border border-vibe-dark3 text-vibe-light placeholder-vibe-muted/50 px-4 py-3 text-sm focus:outline-none focus:border-vibe-red transition-colors"
+                className="w-full bg-vibe-dark2 border border-vibe-dark3 text-vibe-light placeholder-vibe-muted/50 px-4 py-3 text-sm focus:outline-none focus:border-vibe-red transition-colors rounded-lg"
               />
             </div>
             <div>
@@ -696,7 +693,7 @@ export default function AICreator() {
               <input
                 type="email" placeholder="твой@email.ru"
                 value={form.email} onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-                className="w-full bg-vibe-dark2 border border-vibe-dark3 text-vibe-light placeholder-vibe-muted/50 px-4 py-3 text-sm focus:outline-none focus:border-vibe-red transition-colors"
+                className="w-full bg-vibe-dark2 border border-vibe-dark3 text-vibe-light placeholder-vibe-muted/50 px-4 py-3 text-sm focus:outline-none focus:border-vibe-red transition-colors rounded-lg"
               />
             </div>
             <div>
@@ -704,7 +701,7 @@ export default function AICreator() {
               <input
                 type="tel" placeholder="+7 ..."
                 value={form.phone} onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
-                className="w-full bg-vibe-dark2 border border-vibe-dark3 text-vibe-light placeholder-vibe-muted/50 px-4 py-3 text-sm focus:outline-none focus:border-vibe-red transition-colors"
+                className="w-full bg-vibe-dark2 border border-vibe-dark3 text-vibe-light placeholder-vibe-muted/50 px-4 py-3 text-sm focus:outline-none focus:border-vibe-red transition-colors rounded-lg"
               />
             </div>
             <FormCheckboxes pd={formPd} setPd={setFormPd} privacy={formPrivacy} setPrivacy={setFormPrivacy} ads={formAds} setAds={setFormAds} />
@@ -731,7 +728,7 @@ export default function AICreator() {
                 Собрали ответы на самые частые. Если не нашёл своего — напиши нам напрямую.
               </p>
               <a href="mailto:hello@bonnieslide.ru"
-                className="inline-flex items-center gap-2 border border-vibe-dark3 text-vibe-muted font-oswald uppercase tracking-widest text-xs px-5 py-3 hover:border-vibe-red/40 hover:text-vibe-light transition-colors">
+                className="inline-flex items-center gap-2 border border-vibe-dark3 text-vibe-muted font-oswald uppercase tracking-widest text-xs px-5 py-3 hover:border-vibe-red/40 hover:text-vibe-light transition-colors rounded-full">
                 <Icon name="Mail" size={13} />
                 Написать нам
               </a>
