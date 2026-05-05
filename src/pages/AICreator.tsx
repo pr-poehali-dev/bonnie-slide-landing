@@ -353,22 +353,15 @@ export default function AICreator() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {MYTHS.map((m, i) => (
-              <div key={i} className="bg-vibe-dark3 border border-vibe-dark3 p-6 hover:border-vibe-red/20 transition-colors"
+              <div key={i} className="bg-vibe-dark3 border border-vibe-dark3 aspect-square flex flex-col justify-between p-8 hover:border-vibe-red/30 transition-colors"
                 style={{ transitionDelay: `${i * 80}ms` }}>
-                <div className="flex items-start gap-3 mb-4">
-                  <div className="w-6 h-6 rounded-full bg-red-900/40 border border-red-500/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Icon name="X" size={12} className="text-red-400" />
-                  </div>
-                  <p className="font-oswald text-vibe-light text-xl leading-tight">{m.myth}</p>
+                <div className="flex items-start gap-3">
+                  <span className="text-2xl flex-shrink-0 mt-0.5">❌</span>
+                  <p className="font-oswald text-vibe-light text-2xl md:text-3xl leading-tight">{m.myth}</p>
                 </div>
-                <div className="border-t border-vibe-dark3 pt-4 flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-green-900/40 border border-green-500/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Icon name="Check" size={12} className="text-green-400" />
-                  </div>
-                  <div>
-                    <span className="font-oswald text-green-400 text-xs uppercase tracking-wide block mb-1">На деле</span>
-                    <p className="text-vibe-muted text-sm leading-relaxed">{m.fact}</p>
-                  </div>
+                <div className="border-t border-vibe-dark3/80 pt-6 flex items-start gap-3">
+                  <span className="text-2xl flex-shrink-0 mt-0.5">✅</span>
+                  <p className="text-vibe-muted text-lg md:text-xl leading-snug">{m.fact}</p>
                 </div>
               </div>
             ))}
