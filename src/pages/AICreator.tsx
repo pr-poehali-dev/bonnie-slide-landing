@@ -748,17 +748,42 @@ export default function AICreator() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer className="py-8 border-t border-vibe-dark3 bg-vibe-dark">
-        <div className="max-w-6xl mx-auto px-5 flex flex-col md:flex-row justify-between items-center gap-4 text-vibe-muted text-xs">
-          <div className="flex flex-col gap-1 items-start">
-            <Logo width={90} height={11} />
-            <span>© 2026 ООО «Бонни энд Слайд». AI-Creator</span>
+      <footer className="py-10 border-t border-vibe-dark3 bg-vibe-dark">
+        <div className="max-w-6xl mx-auto px-5">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <a href="/"><Logo width={100} height={12} /></a>
+              <p className="text-vibe-muted text-xs mt-3 leading-relaxed">Мини-курс по работе с нейросетями для создания профессионального контента.</p>
+              <p className="text-vibe-muted/50 text-xs mt-2">Лицензия Л035-01298-77/01635812</p>
+            </div>
+            <div>
+              <h4 className="font-oswald text-vibe-light text-sm mb-3">Курс</h4>
+              {[["#myths", "О курсе"], ["#for-who", "Для кого"], ["#results", "Результат"], ["#student-works", "Работы учеников"], ["#buy", "Купить"]].map(([href, label]) => (
+                <a key={href} href={href} className="block text-vibe-muted text-xs mb-2 hover:text-vibe-red transition-colors">{label}</a>
+              ))}
+            </div>
+            <div>
+              <h4 className="font-oswald text-vibe-light text-sm mb-3">Bonnie&amp;Slide</h4>
+              {[["https://bonnieandslide.com", "О компании"], ["/", "Онлайн-курсы"], ["/b2b", "Корпоративное обучение"], ["/order-presentation", "Дизайн презентаций"]].map(([href, label]) => (
+                <a key={label} href={href} className="block text-vibe-muted text-xs mb-2 hover:text-vibe-red transition-colors">{label}</a>
+              ))}
+            </div>
+            <div>
+              <h4 className="font-oswald text-vibe-light text-sm mb-3">Связаться</h4>
+              <a href="mailto:hello@bonnieslide.ru" className="block text-vibe-muted text-xs mb-2 hover:text-vibe-red transition-colors">hello@bonnieslide.ru</a>
+              <a href="https://t.me/bonnieslide" target="_blank" rel="noopener noreferrer" className="block text-vibe-muted text-xs mb-2 hover:text-vibe-red transition-colors">Telegram</a>
+              <button onClick={() => setPopupOpen(true)} className="block text-vibe-red text-xs mt-3 font-oswald uppercase tracking-wide hover:opacity-80 transition-opacity">
+                Начать за 490 ₽ →
+              </button>
+            </div>
           </div>
-          <div className="flex gap-5">
-            <a href="/" className="hover:text-vibe-red transition-colors">Главная</a>
-            <a href="/b2b" className="hover:text-vibe-red transition-colors">B2B</a>
-            <a href="/order-presentation" className="hover:text-vibe-red transition-colors">Заказать презентацию</a>
-            <a href="#" className="hover:text-vibe-red transition-colors">Оферта</a>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 border-t border-vibe-dark3 text-vibe-muted text-xs">
+            <div>© 2026 ООО «Бонни энд Слайд». Все права защищены.</div>
+            <div className="flex gap-4">
+              <a href="/" className="hover:text-vibe-red transition-colors">Онлайн-курсы</a>
+              <a href={PRIVACY_URL} target="_blank" rel="noopener noreferrer" className="hover:text-vibe-red transition-colors">Политика конфиденциальности</a>
+              <a href={CONSENT_PD_URL} target="_blank" rel="noopener noreferrer" className="hover:text-vibe-red transition-colors">Договор-оферта</a>
+            </div>
           </div>
         </div>
       </footer>
