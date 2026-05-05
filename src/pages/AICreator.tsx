@@ -145,6 +145,39 @@ const FOR_WHO = [
   },
 ];
 
+function FooterSubscribe() {
+  const [email, setEmail] = useState("");
+  const [pd, setPd] = useState(false);
+  const [ads, setAds] = useState(false);
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    alert("Спасибо! Вы подписались на новости.");
+    setEmail("");
+  }
+  return (
+    <form onSubmit={handleSubmit} className="space-y-2">
+      <div className="flex gap-2">
+        <input type="email" placeholder="your@email.com" required value={email} onChange={e => setEmail(e.target.value)}
+          className="flex-1 bg-vibe-dark3 border border-vibe-dark3 text-vibe-light placeholder-vibe-muted/50 px-3 py-2 text-xs rounded-lg focus:outline-none focus:border-vibe-red transition-colors min-w-0" />
+        <button type="submit"
+          className="bg-vibe-red text-white font-oswald uppercase tracking-wide px-4 py-2 text-xs rounded-lg hover:opacity-90 transition-opacity whitespace-nowrap flex-shrink-0">
+          Подписаться
+        </button>
+      </div>
+      <label className="flex items-start gap-2 cursor-pointer">
+        <input type="checkbox" required checked={pd} onChange={e => setPd(e.target.checked)} className="mt-0.5 accent-vibe-red flex-shrink-0" />
+        <span className="text-vibe-muted/60 text-[10px] leading-relaxed">
+          Даю <a href={CONSENT_PD_URL} target="_blank" rel="noopener noreferrer" className="underline hover:text-vibe-muted">согласие на обработку</a> своих персональных данных в соответствии с <a href={PRIVACY_URL} target="_blank" rel="noopener noreferrer" className="underline hover:text-vibe-muted">политикой конфиденциальности</a>
+        </span>
+      </label>
+      <label className="flex items-start gap-2 cursor-pointer">
+        <input type="checkbox" checked={ads} onChange={e => setAds(e.target.checked)} className="mt-0.5 accent-vibe-red flex-shrink-0" />
+        <span className="text-vibe-muted/60 text-[10px] leading-relaxed">Соглашаюсь на получение рекламно-информационных материалов</span>
+      </label>
+    </form>
+  );
+}
+
 const RESULTS = [
   { icon: "FileText", title: "Создашь свой первый контент", sub: "Текст и визуал — прямо во время первого урока, не потом." },
   { icon: "Crosshair", title: "Освоишь логику рабочих промптов", sub: "Поймёшь, что и зачем писать — и перестанешь тыкать наугад." },
@@ -748,42 +781,98 @@ export default function AICreator() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer className="py-10 border-t border-vibe-dark3 bg-vibe-dark">
+      <footer className="pt-14 pb-8 border-t border-vibe-dark3 bg-vibe-dark">
         <div className="max-w-6xl mx-auto px-5">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-[220px_1fr_1fr_280px] gap-10 mb-10">
+
+            {/* Col 1 — лого, соцсети, телефоны */}
             <div>
-              <a href="/"><Logo width={100} height={12} /></a>
-              <p className="text-vibe-muted text-xs mt-3 leading-relaxed">Мини-курс по работе с нейросетями для создания профессионального контента.</p>
-              <p className="text-vibe-muted/50 text-xs mt-2">Лицензия Л035-01298-77/01635812</p>
+              <a href="/"><Logo width={110} height={13} /></a>
+              <div className="flex gap-3 mt-5 mb-5">
+                {/* ВКонтакте */}
+                <a href="https://vk.com/bonnieandslide_official" target="_blank" rel="noopener noreferrer" aria-label="ВКонтакте"
+                  className="w-9 h-9 rounded-full bg-vibe-red flex items-center justify-center hover:opacity-80 transition-opacity flex-shrink-0">
+                  <svg width="18" height="18" viewBox="0 0 35 35" fill="none"><path fillRule="evenodd" clipRule="evenodd" d="M28.4586 10.9722C28.6292 10.4239 28.4586 10.0253 27.7039 10.0253H25.1945C24.5615 10.0253 24.2692 10.3743 24.0986 10.7476C24.0986 10.7476 22.8078 13.9365 21.0051 16.004C20.4205 16.6019 20.1527 16.8012 19.836 16.8012C19.6654 16.8012 19.4459 16.6019 19.4459 16.054V10.9465C19.4459 10.299 19.2514 10 18.7152 10H14.7688C14.3787 10 14.1353 10.299 14.1353 10.5979C14.1353 11.2206 15.0366 11.3703 15.1339 13.114V16.9028C15.1339 17.7248 14.9901 17.875 14.671 17.875C13.8186 17.875 11.7481 14.6613 10.5061 10.9994C10.2646 10.2742 10.0193 10 9.3858 10H6.85244C6.12171 10 6 10.3485 6 10.7224C6 11.3951 6.85244 14.7828 9.97038 19.2667C12.0409 22.3292 14.9882 23.9752 17.6433 23.9752C19.2514 23.9752 19.4459 23.6014 19.4459 22.9787V20.6619C19.4459 19.9147 19.5921 19.7903 20.1038 19.7903C20.4689 19.7903 21.1268 19.9891 22.6127 21.4591C24.3176 23.2028 24.6099 24 25.5601 24H28.069C28.7997 24 29.1409 23.6262 28.9459 22.9038C28.7269 22.1815 27.8984 21.1353 26.8265 19.8899C26.2419 19.1928 25.3651 18.4204 25.0972 18.0466C24.7321 17.5483 24.8294 17.349 25.0972 16.9008C25.0728 16.9008 28.1423 12.4665 28.4586 10.9703" fill="white"/></svg>
+                </a>
+                {/* Telegram */}
+                <a href="https://t.me/bonnieandslide" target="_blank" rel="noopener noreferrer" aria-label="Telegram"
+                  className="w-9 h-9 rounded-full bg-vibe-red flex items-center justify-center hover:opacity-80 transition-opacity flex-shrink-0">
+                  <svg width="18" height="18" viewBox="0 0 35 35" fill="none"><path d="M24.9549 7.17658C24.9549 7.17658 27.1749 6.31087 26.9892 8.41315C26.9281 9.27886 26.3732 12.3091 25.9412 15.5863L24.4612 25.2948C24.4612 25.2948 24.3378 26.7171 23.2275 26.9645C22.1178 27.2114 20.4527 26.0988 20.1441 25.8514C19.8972 25.6656 15.519 22.8828 13.9773 21.5228C13.5453 21.1514 13.0516 20.4097 14.039 19.544L20.5138 13.36C21.2538 12.6183 21.9938 10.8869 18.9104 12.9891L10.2761 18.8634C10.2761 18.8634 9.28928 19.4822 7.43958 18.9257L3.43045 17.6885C3.43045 17.6885 1.95046 16.7611 4.47902 15.8337C10.6464 12.9274 18.2321 9.95943 24.9538 7.17658H24.9549Z" fill="white"/></svg>
+                </a>
+                {/* YouTube */}
+                <a href="https://www.youtube.com/@BonnieSlide" target="_blank" rel="noopener noreferrer" aria-label="YouTube"
+                  className="w-9 h-9 rounded-full bg-vibe-red flex items-center justify-center hover:opacity-80 transition-opacity flex-shrink-0">
+                  <svg width="18" height="18" viewBox="0 0 35 35" fill="none"><path fillRule="evenodd" clipRule="evenodd" d="M18 8C18.9405 8 19.9052 8.02475 20.8402 8.06525L21.9446 8.11925L23.0017 8.18338L23.9917 8.252L24.8959 8.324C25.8772 8.40081 26.8005 8.82907 27.5035 9.53342C28.2065 10.2378 28.6441 11.1731 28.7393 12.1749L28.7833 12.653L28.8658 13.6767C28.9428 14.7376 29 15.8941 29 17C29 18.1059 28.9428 19.2624 28.8658 20.3233L28.7833 21.347C28.769 21.5113 28.7547 21.6699 28.7393 21.8251C28.644 22.8271 28.2063 23.7625 27.5031 24.4669C26.7999 25.1713 25.8763 25.5994 24.8948 25.676L23.9928 25.7469L23.0028 25.8166L21.9446 25.8807L20.8402 25.9347C19.894 25.9768 18.9471 25.9986 18 26C17.0529 25.9986 16.106 25.9768 15.1598 25.9347L14.0554 25.8807L12.9983 25.8166L12.0083 25.7469L11.1041 25.676C10.1228 25.5992 9.19951 25.1709 8.49652 24.4666C7.79353 23.7622 7.35593 22.8269 7.2607 21.8251L7.2167 21.347L7.1342 20.3233C7.05009 19.2175 7.00533 18.109 7 17C7 15.8941 7.0572 14.7376 7.1342 13.6767L7.2167 12.653C7.231 12.4887 7.2453 12.3301 7.2607 12.1749C7.35589 11.1733 7.79334 10.2381 8.4961 9.53376C9.19886 8.82943 10.1219 8.40107 11.103 8.324L12.0061 8.252L12.9961 8.18338L14.0543 8.11925L15.1587 8.06525C16.1053 8.02321 17.0526 8.00146 18 8ZM15.8 14.2719V19.7281C15.8 20.2479 16.35 20.5719 16.79 20.3131L21.41 17.585C21.5105 17.5258 21.594 17.4406 21.6521 17.3379C21.7102 17.2352 21.7407 17.1186 21.7407 17C21.7407 16.8814 21.7102 16.7648 21.6521 16.6621C21.594 16.5594 21.5105 16.4742 21.41 16.415L16.79 13.688C16.6896 13.6287 16.5758 13.5975 16.4599 13.5976C16.344 13.5976 16.2302 13.6288 16.1298 13.6881C16.0295 13.7474 15.9462 13.8327 15.8883 13.9353C15.8304 14.038 15.7999 14.1545 15.8 14.273V14.2719Z" fill="white"/></svg>
+                </a>
+              </div>
+              <div className="space-y-3 text-xs text-vibe-muted">
+                <div>
+                  <div className="text-vibe-light text-xs mb-1">Открытые курсы:</div>
+                  <a href="tel:+74951515206" className="block hover:text-vibe-red transition-colors">+7 (495) 15-15-206</a>
+                  <a href="tel:+79311076332" className="block hover:text-vibe-red transition-colors">+7 (931) 107-63-32</a>
+                </div>
+                <div>
+                  <div className="text-vibe-light text-xs mb-1">Корпоративное обучение:</div>
+                  <a href="tel:+74951515306" className="block hover:text-vibe-red transition-colors">+7 (495) 15-15-306</a>
+                  <a href="tel:+79311092892" className="block hover:text-vibe-red transition-colors">+7 (931) 109-28-92</a>
+                </div>
+              </div>
+              <a href="https://bonnieandslide.com/wp-content/themes/bns/assets/documents/license_registry.pdf"
+                target="_blank" rel="noopener noreferrer"
+                className="block text-vibe-muted/50 text-xs mt-4 hover:text-vibe-muted transition-colors leading-relaxed">
+                Государственная лицензия<br />Л035-01298-77/01635812
+              </a>
             </div>
-            <div>
-              <h4 className="font-oswald text-vibe-light text-sm mb-3">Курс</h4>
-              {[["#myths", "О курсе"], ["#for-who", "Для кого"], ["#results", "Результат"], ["#student-works", "Работы учеников"], ["#buy", "Купить"]].map(([href, label]) => (
-                <a key={href} href={href} className="block text-vibe-muted text-xs mb-2 hover:text-vibe-red transition-colors">{label}</a>
+
+            {/* Col 2 — Обучение + Корп. обучение + Всё о дизайне */}
+            <div className="space-y-5 text-xs">
+              <div>
+                <div className="text-vibe-light font-oswald text-sm mb-2">Обучение</div>
+                {[["https://bonnieandslide.com/kursy", "Курсы"], ["https://bonnieandslide.com/pack-for-clients", "Пакетные предложения"], ["https://bonnieandslide.com/professions", "Профессии"], ["https://bonnieandslide.com/certificate", "Подарочные сертификаты"]].map(([href, label]) => (
+                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="block text-vibe-muted mb-1.5 hover:text-vibe-red transition-colors">{label}</a>
+                ))}
+              </div>
+              <div>
+                <div className="text-vibe-light font-oswald text-sm mb-2">Корпоративное обучение</div>
+                {[["https://bonnieandslide.com/corporate-edu", "Курсы для сотрудников"], ["/b2b", "Корп. предложения"]].map(([href, label]) => (
+                  <a key={label} href={href} className="block text-vibe-muted mb-1.5 hover:text-vibe-red transition-colors">{label}</a>
+                ))}
+              </div>
+              <div>
+                <div className="text-vibe-light font-oswald text-sm mb-2">Всё о дизайне</div>
+                {[["https://books.bonnieandslide.com/", "Учебник по презентациям"], ["https://bonnieandslide.com/bank", "Банк слайдов"], ["https://bonnieandslide.com/webinar", "Вебинары"], ["https://bonnieandslide.com/blog", "Блог"]].map(([href, label]) => (
+                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="block text-vibe-muted mb-1.5 hover:text-vibe-red transition-colors">{label}</a>
+                ))}
+              </div>
+              <a href="/order-presentation" className="block text-vibe-light font-oswald text-sm hover:text-vibe-red transition-colors">Заказать презентацию</a>
+            </div>
+
+            {/* Col 3 — О нас */}
+            <div className="text-xs">
+              <div className="text-vibe-light font-oswald text-sm mb-2">О нас</div>
+              {[["https://bonnieandslide.com/about", "Об академии"], ["https://bonnieandslide.com/team", "Команда"], ["https://bonnieandslide.com/smi", "СМИ о нас"], ["https://bonnieandslide.com/info", "Сведения об образовательной организации"], ["https://bonnieandslide.com/cases", "Кейсы"], ["https://bonnieandslide.com/reviews", "Отзывы"], ["https://bonnieandslide.com/contacts", "Контакты"]].map(([href, label]) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="block text-vibe-muted mb-1.5 hover:text-vibe-red transition-colors">{label}</a>
               ))}
             </div>
-            <div>
-              <h4 className="font-oswald text-vibe-light text-sm mb-3">Bonnie&amp;Slide</h4>
-              {[["https://bonnieandslide.com", "О компании"], ["/", "Онлайн-курсы"], ["/b2b", "Корпоративное обучение"], ["/order-presentation", "Дизайн презентаций"]].map(([href, label]) => (
-                <a key={label} href={href} className="block text-vibe-muted text-xs mb-2 hover:text-vibe-red transition-colors">{label}</a>
-              ))}
-            </div>
-            <div>
-              <h4 className="font-oswald text-vibe-light text-sm mb-3">Связаться</h4>
-              <a href="mailto:hello@bonnieslide.ru" className="block text-vibe-muted text-xs mb-2 hover:text-vibe-red transition-colors">hello@bonnieslide.ru</a>
-              <a href="https://t.me/bonnieslide" target="_blank" rel="noopener noreferrer" className="block text-vibe-muted text-xs mb-2 hover:text-vibe-red transition-colors">Telegram</a>
-              <button onClick={() => setPopupOpen(true)} className="block text-vibe-red text-xs mt-3 font-oswald uppercase tracking-wide hover:opacity-80 transition-opacity">
-                Начать за 490 ₽ →
-              </button>
+
+            {/* Col 4 — Новости + правовая */}
+            <div className="text-xs">
+              <div className="text-vibe-light font-oswald text-sm mb-1">Новости академии</div>
+              <p className="text-vibe-muted mb-3 leading-relaxed">Подпишись, чтобы первым узнавать о новых курсах, скидках и промокодах</p>
+              <FooterSubscribe />
+              <div className="mt-5 space-y-1.5">
+                {[[PRIVACY_URL, "Политика конфиденциальности"], [CONSENT_PD_URL, "Согласие на обработку ПД"], [PRIVACY_URL, "Рекомендательные технологии"], [PRIVACY_URL, "Файлы Cookie"]].map(([href, label]) => (
+                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="block text-vibe-muted/60 hover:text-vibe-muted transition-colors">{label}</a>
+                ))}
+              </div>
+              <div className="mt-4 text-vibe-light text-xs font-oswald">ОГРН 1237700606956<br />ИНН 9701259086</div>
+              <div className="mt-2 text-vibe-muted/60 text-xs leading-relaxed">г. Москва, Муниципальный округ Басманный,<br />ул. Нижняя Красносельская, д. 35, стр. 2, 104</div>
             </div>
           </div>
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 border-t border-vibe-dark3 text-vibe-muted text-xs">
-            <div>© 2026 ООО «Бонни энд Слайд». Все права защищены.</div>
-            <div className="flex gap-4">
-              <a href="/" className="hover:text-vibe-red transition-colors">Онлайн-курсы</a>
-              <a href={PRIVACY_URL} target="_blank" rel="noopener noreferrer" className="hover:text-vibe-red transition-colors">Политика конфиденциальности</a>
-              <a href={CONSENT_PD_URL} target="_blank" rel="noopener noreferrer" className="hover:text-vibe-red transition-colors">Договор-оферта</a>
-            </div>
+
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3 pt-6 border-t border-vibe-dark3 text-vibe-muted/50 text-xs">
+            <span>© 2015–2026 Бонни и Слайд</span>
+            <span>Обучающие курсы по презентациям и нейросетям</span>
           </div>
         </div>
       </footer>
