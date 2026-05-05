@@ -231,7 +231,7 @@ export default function OrderPresentation() {
             <a href="#faq" className="hover:text-vibe-light transition-colors">FAQ</a>
           </div>
           <a href="#order-quiz"
-            className="bg-vibe-red text-white font-oswald uppercase tracking-widest text-sm px-5 py-2.5 hover:bg-red-700 transition-colors flex items-center gap-2">
+            className="bg-vibe-red text-white font-oswald uppercase tracking-widest text-sm px-5 py-2.5 hover:bg-red-700 transition-colors flex items-center gap-2 rounded-full">
             <Icon name="ArrowRight" size={14} />
             Заказать
           </a>
@@ -278,7 +278,7 @@ export default function OrderPresentation() {
           </div>
 
           <a href="#order-quiz"
-            className="inline-flex items-center gap-3 bg-vibe-red text-white font-oswald uppercase tracking-widest px-10 py-5 text-xl hover:bg-red-700 transition-all group">
+            className="inline-flex items-center gap-3 bg-vibe-red text-white font-oswald uppercase tracking-widest px-10 py-5 text-xl hover:bg-red-700 transition-all group rounded-full">
             Оставить заявку
             <Icon name="ArrowDown" size={20} className="group-hover:translate-y-1 transition-transform" />
           </a>
@@ -494,7 +494,7 @@ export default function OrderPresentation() {
 
               {/* Nav button */}
               <button onClick={nextQuiz} disabled={!canNext()}
-                className={`w-full font-oswald uppercase tracking-widest py-4 text-lg transition-all flex items-center justify-center gap-2 ${
+                className={`w-full font-oswald uppercase tracking-widest py-4 text-lg transition-all flex items-center justify-center gap-2 rounded-full ${
                   canNext()
                     ? "bg-vibe-red text-white hover:bg-red-700"
                     : "bg-vibe-dark3 text-vibe-muted cursor-not-allowed"
@@ -565,7 +565,7 @@ export default function OrderPresentation() {
                     className="w-full bg-vibe-dark border border-vibe-dark3 text-vibe-light placeholder-vibe-muted px-4 py-3 text-sm focus:outline-none focus:border-vibe-red transition-colors resize-none" />
                 </div>
                 <button type="submit"
-                  className="w-full bg-vibe-red text-white font-oswald uppercase tracking-widest py-5 text-lg hover:bg-red-700 transition-colors flex items-center justify-center gap-2">
+                  className="w-full bg-vibe-red text-white font-oswald uppercase tracking-widest py-5 text-lg hover:bg-red-700 transition-colors flex items-center justify-center gap-2 rounded-full">
                   Отправить заявку
                   <Icon name="ArrowRight" size={18} />
                 </button>
@@ -699,7 +699,7 @@ export default function OrderPresentation() {
           </div>
           <div className="mt-12 text-center">
             <a href="#order-quiz"
-              className="inline-flex items-center gap-2 bg-vibe-red text-white font-oswald uppercase tracking-widest px-8 py-4 hover:bg-red-700 transition-colors">
+              className="inline-flex items-center gap-2 bg-vibe-red text-white font-oswald uppercase tracking-widest px-8 py-4 hover:bg-red-700 transition-colors rounded-full">
               Начать — это бесплатно
               <Icon name="ArrowRight" size={16} />
             </a>
@@ -750,7 +750,7 @@ export default function OrderPresentation() {
             Заполните бриф — ответим в течение 2 часов и назовём стоимость
           </p>
           <a href="#order-quiz"
-            className="inline-flex items-center gap-2 bg-white text-vibe-red font-oswald uppercase tracking-widest px-10 py-5 text-xl hover:bg-gray-100 transition-colors">
+            className="inline-flex items-center gap-2 bg-white text-vibe-red font-oswald uppercase tracking-widest px-10 py-5 text-xl hover:bg-gray-100 transition-colors rounded-full">
             Оставить заявку
             <Icon name="ArrowRight" size={18} />
           </a>
@@ -803,7 +803,7 @@ export default function OrderPresentation() {
             <div className="text-vibe-muted text-xs">Дизайн-студия Bonnie&amp;Slide</div>
             <div className="font-oswald text-vibe-light text-sm">Ответим за 2 часа</div>
           </div>
-          <a href="#order-quiz" className="bg-vibe-red text-white font-oswald uppercase tracking-widest text-xs px-5 py-3">
+          <a href="#order-quiz" className="bg-vibe-red text-white font-oswald uppercase tracking-widest text-xs px-5 py-3 rounded-full">
             Заказать →
           </a>
         </div>
