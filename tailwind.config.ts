@@ -57,12 +57,12 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				vibe: {
-					red: '#e8185f',
-					dark: '#0a0a0f',
-					dark2: '#0f0f18',
-					dark3: '#181825',
+					red: '#F60C51',
+					dark: '#000000',
+					dark2: '#0d0d0d',
+					dark3: '#1a1a1a',
 					light: '#ffffff',
-					muted: '#9090a8',
+					muted: '#abb8c3',
 				}
 			},
 			borderRadius: {
@@ -84,8 +84,8 @@ export default {
 					to: { opacity: '1', transform: 'translateY(0)' }
 				},
 				'pulse-red': {
-					'0%, 100%': { boxShadow: '0 0 0 0 rgba(232,24,95,0.4)' },
-					'50%': { boxShadow: '0 0 0 12px rgba(232,24,95,0)' }
+					'0%, 100%': { boxShadow: '0 0 0 0 rgba(246,12,81,0.4)' },
+					'50%': { boxShadow: '0 0 0 12px rgba(246,12,81,0)' }
 				}
 			},
 			animation: {

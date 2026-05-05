@@ -4,42 +4,42 @@
 
 @layer base {
   :root {
-    --background: 240 25% 4%;
+    --background: 0 0% 0%;
     --foreground: 0 0% 100%;
 
-    --card: 240 20% 7%;
+    --card: 0 0% 5%;
     --card-foreground: 0 0% 100%;
 
-    --popover: 240 20% 7%;
+    --popover: 0 0% 5%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 340 83% 51%;
+    --primary: 343 97% 51%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 15% 10%;
+    --secondary: 0 0% 10%;
     --secondary-foreground: 0 0% 90%;
 
-    --muted: 240 15% 10%;
-    --muted-foreground: 240 5% 56%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 207 15% 67%;
 
-    --accent: 340 83% 51%;
+    --accent: 343 97% 51%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 240 10% 14%;
-    --input: 240 10% 14%;
-    --ring: 340 83% 51%;
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --ring: 343 97% 51%;
 
     --radius: 0.75rem;
 
-    --red: #e8185f;
-    --dark: #0a0a0f;
-    --dark-2: #0f0f18;
-    --dark-3: #181825;
+    --red: #f60c51;
+    --dark: #000000;
+    --dark-2: #0d0d0d;
+    --dark-3: #1a1a1a;
     --light: #ffffff;
-    --muted-text: #9090a8;
+    --muted-text: #abb8c3;
   }
 }
 
@@ -51,7 +51,7 @@
   body {
     @apply bg-background text-foreground;
     font-family: "Golos Text", sans-serif;
-    background-color: #0a0a0f;
+    background-color: #000000;
     color: #ffffff;
   }
 
@@ -118,7 +118,7 @@
 
   .hover-lift:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(232, 24, 95, 0.2);
+    box-shadow: 0 12px 40px rgba(246, 12, 81, 0.2);
   }
 
   .red-line::before {
@@ -126,7 +126,7 @@
     display: block;
     width: 48px;
     height: 4px;
-    background: #e8185f;
+    background: #f60c51;
     margin-bottom: 16px;
   }
 
@@ -134,7 +134,7 @@
     font-family: "Oswald", sans-serif;
     font-size: 4rem;
     font-weight: 700;
-    color: #e8185f;
+    color: #f60c51;
     line-height: 1;
     opacity: 0.15;
     position: absolute;
