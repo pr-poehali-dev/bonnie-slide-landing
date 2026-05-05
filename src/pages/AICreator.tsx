@@ -303,12 +303,6 @@ export default function AICreator() {
             <p className="text-vibe-muted text-base mb-8 leading-relaxed max-w-md">
               4 урока о том, как писать промпты и собирать контент, который выглядит профессионально
             </p>
-            {/* Price */}
-            <div className="flex items-center gap-3 mb-6">
-              <span className="font-oswald text-5xl text-vibe-light">490 ₽</span>
-              <span className="font-oswald text-2xl text-vibe-muted line-through">990 ₽</span>
-              <span className="text-vibe-muted text-xs">разовый доступ навсегда</span>
-            </div>
             <button onClick={() => setPopupOpen(true)}
               className="inline-flex items-center gap-2 bg-vibe-red text-white font-oswald uppercase tracking-widest px-8 py-4 text-lg hover:bg-red-700 transition-all animate-pulse-red rounded-full mb-4">
               Начать за 490 ₽ <span className="line-through opacity-60 text-base">990 ₽</span> →
