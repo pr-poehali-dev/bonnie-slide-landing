@@ -139,11 +139,12 @@ const FOR_WHO = [
 ];
 
 const RESULTS = [
-  { icon: "FileText", title: "Создашь свой первый контент", sub: "текст + визуал" },
-  { icon: "Crosshair", title: "Освоишь логику рабочих промптов", sub: "и будешь понимать, что и зачем делаешь" },
-  { icon: "Settings2", title: "Поймёшь, как адаптировать нейросети под свои задачи", sub: "под любой формат и нишу" },
-  { icon: "Zap", title: "Научишься делать контент быстро", sub: "даже в условиях дедлайна" },
-  { icon: "Lightbulb", title: "Узнаешь фишки нейросетей", sub: "о которых большинство не знает" },
+  { icon: "FileText", title: "Создашь свой первый контент", sub: "Текст и визуал — прямо во время первого урока, не потом." },
+  { icon: "Crosshair", title: "Освоишь логику рабочих промптов", sub: "Поймёшь, что и зачем писать — и перестанешь тыкать наугад." },
+  { icon: "Settings2", title: "Адаптируешь нейросети под себя", sub: "Под любой формат, нишу и задачу — без шаблонных результатов." },
+  { icon: "Zap", title: "Научишься делать контент быстро", sub: "Даже в условиях дедлайна — без потери качества." },
+  { icon: "Lightbulb", title: "Узнаешь фишки нейросетей", sub: "То, о чём большинство пользователей даже не догадывается." },
+  { icon: "TrendingUp", title: "Получишь базу для роста", sub: "Этот курс — старт. Дальше — система, скорость, результат." },
 ];
 
 const HOW = [
@@ -468,23 +469,32 @@ export default function AICreator() {
       {/* ── RESULTS ── */}
       <section id="results" className="py-20 bg-vibe-dark2 section-appear">
         <div className="max-w-6xl mx-auto px-5">
-          <div className="mb-3">
-            <span className="text-vibe-muted text-xs font-oswald uppercase tracking-widest">Что получишь</span>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <div className="mb-3">
+                <span className="text-vibe-muted text-xs font-oswald uppercase tracking-widest">Что получишь</span>
+              </div>
+              <h2 className="font-oswald text-5xl md:text-7xl text-vibe-light leading-none">
+                ПОСЛЕ 4 УРОКОВ<br />ТЫ:
+              </h2>
+            </div>
+            <p className="text-vibe-muted text-sm max-w-xs md:text-right">
+              Каждый урок даёт конкретный навык — не теорию, а умение, которое можно применить сразу
+            </p>
           </div>
-          <h2 className="font-oswald text-5xl md:text-7xl text-vibe-light mb-12">
-            ПОСЛЕ 4 УРОКОВ<br />ТЫ:
-          </h2>
-          <div className="space-y-3 max-w-2xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {RESULTS.map((r, i) => (
-              <div key={i} className="flex items-center gap-5 bg-vibe-dark3 border border-vibe-dark3 px-6 py-5 hover:border-vibe-red/30 transition-colors group"
+              <div key={i}
+                className="relative bg-vibe-dark3 border border-vibe-dark3 p-7 hover:border-vibe-red/40 transition-colors group overflow-hidden"
                 style={{ transitionDelay: `${i * 70}ms` }}>
-                <div className="w-10 h-10 bg-vibe-dark border border-vibe-dark3 flex items-center justify-center flex-shrink-0 group-hover:border-vibe-red/30 transition-colors">
-                  <Icon name={r.icon} fallback="Check" size={16} className="text-vibe-red" />
+                <span className="absolute top-4 right-5 font-oswald text-6xl text-vibe-light/5 group-hover:text-vibe-red/10 transition-colors select-none">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="w-11 h-11 bg-vibe-red/10 border border-vibe-red/20 flex items-center justify-center mb-5">
+                  <Icon name={r.icon} fallback="Check" size={18} className="text-vibe-red" />
                 </div>
-                <div>
-                  <div className="font-oswald text-vibe-light text-base">{r.title}</div>
-                  <div className="text-vibe-muted text-xs mt-0.5">{r.sub}</div>
-                </div>
+                <div className="font-oswald text-vibe-light text-xl leading-tight mb-2 group-hover:text-vibe-red transition-colors">{r.title}</div>
+                <div className="text-vibe-muted text-sm leading-relaxed">{r.sub}</div>
               </div>
             ))}
           </div>
