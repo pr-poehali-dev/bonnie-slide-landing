@@ -329,7 +329,7 @@ export default function AICreator() {
               </div>
               <FormCheckboxes pd={popupPd} setPd={setPopupPd} privacy={popupPrivacy} setPrivacy={setPopupPrivacy} ads={popupAds} setAds={setPopupAds} />
               <button type="submit"
-                className="w-full bg-vibe-red text-white font-oswald uppercase tracking-widest py-4 text-base hover:bg-red-700 transition-all rounded-full mt-2">
+                className="w-full bg-vibe-red text-white font-oswald uppercase tracking-widest py-4 text-base hover:opacity-85 transition-all rounded-full mt-2">
                 Начать за 490 ₽ <span className="line-through opacity-60">990 ₽</span> →
               </button>
             </form>
@@ -352,7 +352,7 @@ export default function AICreator() {
             <a href="#buy" className="hover:text-vibe-light transition-colors">Купить</a>
           </div>
           <button onClick={() => setPopupOpen(true)}
-            className="bg-vibe-red text-white font-oswald uppercase tracking-widest text-xs px-5 py-2.5 hover:bg-red-700 transition-colors rounded-full flex-shrink-0">
+            className="bg-vibe-red text-white font-oswald uppercase tracking-widest text-xs px-5 py-2.5 hover:opacity-85 transition-colors rounded-full flex-shrink-0">
             Начать за 490 ₽
           </button>
         </div>
@@ -487,7 +487,7 @@ export default function AICreator() {
               <p className="text-vibe-muted text-sm">4 урока · доступ навсегда · результат с первого урока</p>
             </div>
             <button onClick={() => setPopupOpen(true)}
-              className="flex-shrink-0 bg-vibe-red text-white font-oswald uppercase tracking-widest px-8 py-4 text-base hover:bg-red-700 transition-colors rounded-full whitespace-nowrap">
+              className="flex-shrink-0 bg-vibe-red text-white font-oswald uppercase tracking-widest px-8 py-4 text-base hover:opacity-85 transition-colors rounded-full whitespace-nowrap">
               Начать за 490 ₽ <span className="line-through opacity-60">990 ₽</span> →
             </button>
           </div>
@@ -614,7 +614,7 @@ export default function AICreator() {
             </div>
             <div className="relative z-10 flex flex-col items-center gap-3 flex-shrink-0">
               <button onClick={() => setPopupOpen(true)}
-                className="bg-vibe-red text-white font-oswald uppercase tracking-widest px-10 py-5 text-lg hover:bg-red-700 transition-colors rounded-full whitespace-nowrap animate-pulse-red">
+                className="bg-vibe-red text-white font-oswald uppercase tracking-widest px-10 py-5 text-lg hover:opacity-85 transition-colors rounded-full whitespace-nowrap animate-pulse-red">
                 Начать за 490 ₽ <span className="line-through opacity-60">990 ₽</span> →
               </button>
               <span className="text-vibe-muted text-xs">Доступ навсегда · без подписки</span>
@@ -732,7 +732,7 @@ export default function AICreator() {
             </div>
             <FormCheckboxes pd={formPd} setPd={setFormPd} privacy={formPrivacy} setPrivacy={setFormPrivacy} ads={formAds} setAds={setFormAds} />
             <button type="submit"
-              className="w-full bg-vibe-red text-white font-oswald uppercase tracking-widest py-5 text-lg hover:bg-red-700 transition-all animate-pulse-red rounded-full mt-2">
+              className="w-full bg-vibe-red text-white font-oswald uppercase tracking-widest py-5 text-lg hover:opacity-85 transition-all animate-pulse-red rounded-full mt-2">
               Начать за 490 ₽ <span className="line-through opacity-60 text-base">990 ₽</span> →
             </button>
           </form>
