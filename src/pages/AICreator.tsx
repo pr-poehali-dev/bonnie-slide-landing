@@ -50,19 +50,26 @@ function Marquee({ reverse = false }: { reverse?: boolean }) {
 }
 
 // ── FAQ accordion ──────────────────────────────────────────────────────────────
-function FAQItem({ q, a }: { q: string; a: string }) {
+function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="border border-vibe-dark3 bg-vibe-dark3">
+    <div className={`border-b border-vibe-dark3 ${open ? "bg-vibe-dark3/40" : ""} transition-colors`}>
       <button
         onClick={() => setOpen((o) => !o)}
-        className="w-full flex items-center justify-between px-6 py-5 text-left gap-4"
+        className="w-full flex items-start justify-between px-0 py-6 text-left gap-6 group"
       >
-        <span className="font-oswald text-vibe-light text-sm">{q}</span>
-        <Icon name={open ? "Minus" : "Plus"} size={16} className="text-vibe-red flex-shrink-0" />
+        <div className="flex items-start gap-4">
+          <span className="font-oswald text-vibe-red/40 text-sm mt-0.5 w-6 flex-shrink-0 group-hover:text-vibe-red transition-colors">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <span className="font-oswald text-vibe-light text-lg group-hover:text-vibe-red transition-colors leading-tight">{q}</span>
+        </div>
+        <div className={`w-8 h-8 border flex items-center justify-center flex-shrink-0 mt-0.5 transition-colors ${open ? "border-vibe-red bg-vibe-red/10" : "border-vibe-dark3 group-hover:border-vibe-red/40"}`}>
+          <Icon name={open ? "Minus" : "Plus"} size={14} className={open ? "text-vibe-red" : "text-vibe-muted"} />
+        </div>
       </button>
       {open && (
-        <div className="px-6 pb-5 text-vibe-muted text-sm leading-relaxed border-t border-vibe-dark3 pt-4 animate-fade-in">
+        <div className="pl-10 pb-6 text-vibe-muted text-sm leading-relaxed animate-fade-in">
           {a}
         </div>
       )}
@@ -711,18 +718,27 @@ export default function AICreator() {
 
       {/* ── FAQ ── */}
       <section className="py-20 bg-vibe-dark2 section-appear">
-        <div className="max-w-2xl mx-auto px-5">
-          <h2 className="font-oswald text-4xl md:text-5xl text-vibe-light mb-10">ВОПРОСЫ</h2>
-          <div className="space-y-1">
-            {FAQS.map((f, i) => <FAQItem key={i} q={f.q} a={f.a} />)}
-          </div>
-          <div className="mt-10 text-center">
-            <p className="text-vibe-muted text-sm mb-4">Остались вопросы?</p>
-            <a href="mailto:hello@bonnieslide.ru"
-              className="inline-flex items-center gap-2 border border-vibe-dark3 text-vibe-muted font-oswald uppercase tracking-widest text-sm px-6 py-3 hover:border-vibe-red/40 hover:text-vibe-light transition-colors rounded-full">
-              <Icon name="Mail" size={14} />
-              Написать нам
-            </a>
+        <div className="max-w-6xl mx-auto px-5">
+          <div className="grid md:grid-cols-[1fr_2fr] gap-16 items-start">
+            <div className="md:sticky md:top-28">
+              <div className="mb-3">
+                <span className="text-vibe-muted text-xs font-oswald uppercase tracking-widest">Частые вопросы</span>
+              </div>
+              <h2 className="font-oswald text-5xl md:text-6xl text-vibe-light leading-none mb-6">
+                ОСТАЛИСЬ<br />ВОПРОСЫ?
+              </h2>
+              <p className="text-vibe-muted text-sm leading-relaxed mb-8">
+                Собрали ответы на самые частые. Если не нашёл своего — напиши нам напрямую.
+              </p>
+              <a href="mailto:hello@bonnieslide.ru"
+                className="inline-flex items-center gap-2 border border-vibe-dark3 text-vibe-muted font-oswald uppercase tracking-widest text-xs px-5 py-3 hover:border-vibe-red/40 hover:text-vibe-light transition-colors">
+                <Icon name="Mail" size={13} />
+                Написать нам
+              </a>
+            </div>
+            <div className="border-t border-vibe-dark3">
+              {FAQS.map((f, i) => <FAQItem key={i} index={i} q={f.q} a={f.a} />)}
+            </div>
           </div>
         </div>
       </section>
