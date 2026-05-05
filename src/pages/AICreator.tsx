@@ -415,7 +415,7 @@ export default function AICreator() {
           <div className="mt-10 flex flex-col md:flex-row items-center justify-between gap-6 bg-gradient-to-r from-vibe-red/20 to-vibe-dark3 border border-vibe-red/30 p-8">
             <div>
               <p className="font-oswald text-vibe-light text-2xl md:text-3xl leading-tight mb-1">
-                Узнай себя? Тогда это твой курс.
+                Нейросети уже меняют рынок — начни использовать их первым.
               </p>
               <p className="text-vibe-muted text-sm">4 урока · доступ навсегда · результат с первого урока</p>
             </div>
