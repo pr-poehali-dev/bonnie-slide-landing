@@ -783,7 +783,7 @@ export default function AICreator() {
       {/* ── FOOTER ── */}
       <footer className="pt-14 pb-8 border-t border-vibe-dark3 bg-vibe-dark">
         <div className="max-w-6xl mx-auto px-5">
-          <div className="grid grid-cols-1 md:grid-cols-[220px_1fr_1fr_280px] gap-10 mb-10">
+          <div className="grid grid-cols-1 md:grid-cols-[220px_1fr_280px] gap-10 mb-10">
 
             {/* Col 1 — лого, соцсети, телефоны */}
             <div>
@@ -824,38 +824,23 @@ export default function AICreator() {
               </a>
             </div>
 
-            {/* Col 2 — Обучение + Корп. обучение + Всё о дизайне */}
+            {/* Col 2 — Обучение (курс) */}
             <div className="space-y-5 text-xs">
               <div>
-                <div className="text-vibe-light font-oswald text-sm mb-2">Обучение</div>
-                {[["https://bonnieandslide.com/kursy", "Курсы"], ["https://bonnieandslide.com/pack-for-clients", "Пакетные предложения"], ["https://bonnieandslide.com/professions", "Профессии"], ["https://bonnieandslide.com/certificate", "Подарочные сертификаты"]].map(([href, label]) => (
-                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="block text-vibe-muted mb-1.5 hover:text-vibe-red transition-colors">{label}</a>
-                ))}
-              </div>
-              <div>
-                <div className="text-vibe-light font-oswald text-sm mb-2">Корпоративное обучение</div>
-                {[["https://bonnieandslide.com/corporate-edu", "Курсы для сотрудников"], ["/b2b", "Корп. предложения"]].map(([href, label]) => (
+                <div className="text-vibe-light font-oswald text-sm mb-2">Курс AI-Creator</div>
+                {[["#myths", "О курсе"], ["#for-who", "Для кого"], ["#results", "Результат"], ["#student-works", "Работы учеников"], ["#buy", "Купить"]].map(([href, label]) => (
                   <a key={label} href={href} className="block text-vibe-muted mb-1.5 hover:text-vibe-red transition-colors">{label}</a>
                 ))}
               </div>
               <div>
-                <div className="text-vibe-light font-oswald text-sm mb-2">Всё о дизайне</div>
-                {[["https://books.bonnieandslide.com/", "Учебник по презентациям"], ["https://bonnieandslide.com/bank", "Банк слайдов"], ["https://bonnieandslide.com/webinar", "Вебинары"], ["https://bonnieandslide.com/blog", "Блог"]].map(([href, label]) => (
-                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="block text-vibe-muted mb-1.5 hover:text-vibe-red transition-colors">{label}</a>
+                <div className="text-vibe-light font-oswald text-sm mb-2">Bonnie&amp;Slide</div>
+                {[["https://bonnieandslide.com", "Сайт академии"], ["/", "Онлайн-курсы"], ["/b2b", "Корпоративное обучение"]].map(([href, label]) => (
+                  <a key={label} href={href} className="block text-vibe-muted mb-1.5 hover:text-vibe-red transition-colors">{label}</a>
                 ))}
               </div>
-              <a href="/order-presentation" className="block text-vibe-light font-oswald text-sm hover:text-vibe-red transition-colors">Заказать презентацию</a>
             </div>
 
-            {/* Col 3 — О нас */}
-            <div className="text-xs">
-              <div className="text-vibe-light font-oswald text-sm mb-2">О нас</div>
-              {[["https://bonnieandslide.com/about", "Об академии"], ["https://bonnieandslide.com/team", "Команда"], ["https://bonnieandslide.com/smi", "СМИ о нас"], ["https://bonnieandslide.com/info", "Сведения об образовательной организации"], ["https://bonnieandslide.com/cases", "Кейсы"], ["https://bonnieandslide.com/reviews", "Отзывы"], ["https://bonnieandslide.com/contacts", "Контакты"]].map(([href, label]) => (
-                <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="block text-vibe-muted mb-1.5 hover:text-vibe-red transition-colors">{label}</a>
-              ))}
-            </div>
-
-            {/* Col 4 — Новости + правовая */}
+            {/* Col 3 — Новости + правовая */}
             <div className="text-xs">
               <div className="text-vibe-light font-oswald text-sm mb-1">Новости академии</div>
               <p className="text-vibe-muted mb-3 leading-relaxed">Подпишись, чтобы первым узнавать о новых курсах, скидках и промокодах</p>
