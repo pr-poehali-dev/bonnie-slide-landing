@@ -410,6 +410,20 @@ export default function AICreator() {
               </div>
             ))}
           </div>
+
+          {/* CTA block */}
+          <div className="mt-10 flex flex-col md:flex-row items-center justify-between gap-6 bg-gradient-to-r from-vibe-red/20 to-vibe-dark3 border border-vibe-red/30 p-8">
+            <div>
+              <p className="font-oswald text-vibe-light text-2xl md:text-3xl leading-tight mb-1">
+                Узнай себя? Тогда это твой курс.
+              </p>
+              <p className="text-vibe-muted text-sm">4 урока · доступ навсегда · результат с первого урока</p>
+            </div>
+            <button onClick={() => setPopupOpen(true)}
+              className="flex-shrink-0 bg-vibe-red text-white font-oswald uppercase tracking-widest px-8 py-4 text-base hover:bg-red-700 transition-colors rounded-full whitespace-nowrap">
+              Начать за 490 ₽ <span className="line-through opacity-60">990 ₽</span> →
+            </button>
+          </div>
         </div>
       </section>
 
