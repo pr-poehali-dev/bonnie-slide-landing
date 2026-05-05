@@ -307,9 +307,15 @@ export default function AICreator() {
               className="inline-flex items-center gap-2 bg-vibe-red text-white font-oswald uppercase tracking-widest px-8 py-4 text-lg hover:bg-red-700 transition-all animate-pulse-red rounded-full mb-4">
               Начать за 490 ₽ <span className="line-through opacity-60 text-base">990 ₽</span> →
             </button>
-            <div className="flex items-center gap-2 text-vibe-muted text-xs">
-              <span className="w-2 h-2 bg-green-500 rounded-full" />
-              Доступ открывается <strong className="text-vibe-light ml-1">сразу после оплаты</strong>
+            <div className="flex flex-col gap-1.5">
+              <div className="flex items-center gap-2 text-vibe-muted text-xs">
+                <span className="w-2 h-2 bg-green-500 rounded-full" />
+                Доступ открывается <strong className="text-vibe-light ml-1">сразу после оплаты</strong>
+              </div>
+              <div className="flex items-center gap-2 text-vibe-muted text-xs">
+                <span className="w-2 h-2 bg-vibe-red/60 rounded-full" />
+                Разовый платёж — <strong className="text-vibe-light ml-1">доступ навсегда</strong>
+              </div>
             </div>
           </div>
 
