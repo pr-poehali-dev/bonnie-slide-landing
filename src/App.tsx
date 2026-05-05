@@ -9,6 +9,7 @@ import B2B from "./pages/B2B";
 import B2BCourses from "./pages/B2BCourses";
 import OrderPresentation from "./pages/OrderPresentation";
 import AICreator from "./pages/AICreator";
+import AICreator2 from "./pages/AICreator2";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/b2b/courses" element={<B2BCourses />} />
           <Route path="/order-presentation" element={<OrderPresentation />} />
           <Route path="/ai-creator" element={<AICreator />} />
+          <Route path="/ai-creator2" element={<AICreator2 />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
