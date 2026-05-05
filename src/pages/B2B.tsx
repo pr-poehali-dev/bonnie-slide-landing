@@ -276,7 +276,7 @@ function Calculator() {
             <div className="text-vibe-muted text-xs mt-1">длительность</div>
           </div>
         </div>
-        <a href="#form" className="block w-full bg-vibe-red text-white font-oswald uppercase tracking-widest py-4 text-center hover:bg-red-700 transition-colors">
+        <a href="#form" className="block w-full bg-vibe-red text-white font-oswald uppercase tracking-widest py-4 text-center hover:bg-red-700 transition-colors rounded-full">
           Запросить КП с этим расчётом
         </a>
         <p className="text-vibe-muted text-xs text-center mt-3">Без обязательств и звонка с менеджером</p>
@@ -307,7 +307,7 @@ export default function B2B() {
             <a href="#cases" className="hover:text-vibe-red transition-colors">Кейсы</a>
             <a href="#faq" className="hover:text-vibe-red transition-colors">FAQ</a>
           </nav>
-          <a href="#form" className="bg-vibe-red text-white font-oswald uppercase tracking-widest text-sm px-5 py-2.5 hover:bg-red-700 transition-colors">
+          <a href="#form" className="bg-vibe-red text-white font-oswald uppercase tracking-widest text-sm px-5 py-2.5 hover:bg-red-700 transition-colors rounded-full">
             Заказать тренинг
           </a>
         </div>
@@ -334,7 +334,7 @@ export default function B2B() {
                 Тренинги для команд Марса, Самсунга, ВК, Лукойла и ещё 200+ компаний. За 1–2 дня команда учится делать презентации, за которые не стыдно, и использовать нейросети в работе. На материалах вашей команды.
               </p>
               <div className="flex flex-wrap gap-4 mb-10">
-                <a href="#calc" className="bg-vibe-red text-white font-oswald uppercase tracking-widest px-7 py-4 hover:bg-red-700 transition-colors flex items-center gap-2">
+                <a href="#calc" className="bg-vibe-red text-white font-oswald uppercase tracking-widest px-7 py-4 hover:bg-red-700 transition-colors flex items-center gap-2 rounded-full">
                   Рассчитать стоимость
                   <Icon name="ArrowRight" size={16} />
                 </a>

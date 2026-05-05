@@ -266,7 +266,7 @@ export default function B2BCourses() {
             </p>
             <div className="flex flex-wrap gap-4 mb-10">
               <a href="#quiz"
-                className="bg-vibe-red text-white font-oswald uppercase tracking-widest px-8 py-4 text-lg hover:bg-red-700 transition-all flex items-center gap-2 animate-pulse-red">
+                className="bg-vibe-red text-white font-oswald uppercase tracking-widest px-8 py-4 text-lg hover:bg-red-700 transition-all flex items-center gap-2 animate-pulse-red rounded-full">
                 Собрать программу
                 <Icon name="ArrowRight" size={18} />
               </a>
@@ -397,7 +397,7 @@ export default function B2BCourses() {
                 <button
                   onClick={nextStep}
                   disabled={stepAnswers.length === 0}
-                  className={`font-oswald uppercase tracking-widest px-8 py-4 transition-all flex items-center gap-2 ${
+                  className={`font-oswald uppercase tracking-widest px-8 py-4 transition-all flex items-center gap-2 rounded-full ${
                     stepAnswers.length > 0
                       ? "bg-vibe-red text-white hover:bg-red-700"
                       : "bg-vibe-dark3 text-vibe-muted cursor-not-allowed"
@@ -504,7 +504,7 @@ export default function B2BCourses() {
                   </button>
                 )}
                 <button onClick={() => { setShowModal("program"); setFormSent(false); }}
-                  className="flex-1 bg-vibe-red text-white font-oswald uppercase tracking-widest py-3 hover:bg-red-700 transition-colors flex items-center justify-center gap-2">
+                  className="flex-1 bg-vibe-red text-white font-oswald uppercase tracking-widest py-3 hover:bg-red-700 transition-colors flex items-center justify-center gap-2 rounded-full">
                   Отправить программу и получить КП
                   <Icon name="ArrowRight" size={16} />
                 </button>
@@ -593,7 +593,7 @@ export default function B2BCourses() {
                     </p>
                     <button
                       onClick={() => { setShowModal("call"); setFormSent(false); }}
-                      className="bg-vibe-red text-white font-oswald uppercase tracking-widest text-sm px-5 py-2.5 hover:bg-red-700 transition-colors"
+                      className="bg-vibe-red text-white font-oswald uppercase tracking-widest text-sm px-5 py-2.5 hover:bg-red-700 transition-colors rounded-full"
                     >
                       Заказать звонок
                     </button>

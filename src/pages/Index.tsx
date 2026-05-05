@@ -92,7 +92,7 @@ export default function Index() {
             <a href="#reviews" className="hover:text-vibe-red transition-colors">Отзывы</a>
             <a href="#faq" className="hover:text-vibe-red transition-colors">FAQ</a>
           </nav>
-          <a href="#buy" className="bg-vibe-red text-white font-oswald uppercase tracking-widest text-sm px-5 py-2.5 hover:bg-red-700 transition-colors">
+          <a href="#buy" className="bg-vibe-red text-white font-oswald uppercase tracking-widest text-sm px-5 py-2.5 hover:bg-red-700 transition-colors rounded-full">
             Записаться
           </a>
         </div>
@@ -117,7 +117,7 @@ export default function Index() {
               Научись создавать профессиональные сайты и приложения на русском языке — с помощью искусственного интеллекта. Без программирования, дизайнеров и агентств.
             </p>
             <div className="flex flex-wrap items-center gap-4 mb-10">
-              <a href="#buy" className="bg-vibe-red text-white font-oswald uppercase tracking-widest px-8 py-4 text-lg hover:bg-red-700 transition-all animate-pulse-red">
+              <a href="#buy" className="bg-vibe-red text-white font-oswald uppercase tracking-widest px-8 py-4 text-lg hover:bg-red-700 transition-all animate-pulse-red rounded-full">
                 Начать обучение
               </a>
               <a href="#lessons" className="text-vibe-muted text-sm flex items-center gap-2 hover:text-vibe-light transition-colors">
@@ -287,7 +287,7 @@ export default function Index() {
                 </li>
               ))}
             </ul>
-            <button className="w-full bg-vibe-red text-white font-oswald uppercase tracking-widest text-lg py-5 hover:bg-red-700 transition-all animate-pulse-red">
+            <button className="w-full bg-vibe-red text-white font-oswald uppercase tracking-widest text-lg py-5 hover:bg-red-700 transition-all animate-pulse-red rounded-full">
               Купить курс за 3 500 ₽
             </button>
             <p className="text-vibe-muted text-xs mt-4">Безопасная оплата · 14 дней возврат без вопросов</p>
