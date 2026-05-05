@@ -41,17 +41,17 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 const MYTHS = [
   {
     myth: '"Нейросети — это сложно"',
-    fact: "На деле — всё сводится в формулировку задания",
+    fact: "На деле — всё упирается в формулировку задачи",
     ok: true,
   },
   {
-    myth: '"У меня не получится"',
-    fact: "На деле — просто никто не показал, как делать результат управляемым",
+    myth: '"У меня не получается"',
+    fact: "На деле — просто никто не показал, как писать рабочие промпты",
     ok: true,
   },
   {
     myth: '"Получается ерунда"',
-    fact: "На деле — потому что нет идеи и логики, а не из-за нейросетей",
+    fact: "На деле — потому что нет идеи и логики, а не из-за нейросети",
     ok: true,
   },
   {
@@ -65,17 +65,17 @@ const FOR_WHO = [
   {
     icon: "Palette",
     title: "Дизайнер",
-    sub: "Хочешь работать быстрее и не падать клиентам",
+    sub: "Хочешь работать быстрее и не отставать от рынка",
     bullets: [
       "от тебя ждут «быстро и дизайно»",
       "конкуренты уже используют нейросети",
-      "надо как встроить ИИ в процесс",
+      "нужно встроить ИИ в процесс",
     ],
   },
   {
     icon: "PenLine",
-    title: "Контент-мейкер / SMM / блогер",
-    sub: "Нужен нескончаемый поток контента",
+    title: "Контент-мейкер",
+    sub: "Нужен стабильный поток идей и стильного контента",
     bullets: [
       "не хватает идей",
       "выгораешь от постоянного творчества",
@@ -85,20 +85,20 @@ const FOR_WHO = [
   {
     icon: "TrendingUp",
     title: "Маркетолог",
-    sub: "Много задач, мало времени",
+    sub: "Хочешь делегировать задачи нейросетям",
     bullets: [
-      "от тебя быстрые результаты",
+      "от тебя ждут быстрых результатов",
       "конкурент уже использует AI",
-      "нужно улучшить себя внутри команды",
+      "нужно усилить себя внутри команды",
     ],
   },
   {
     icon: "Sparkles",
-    title: "Начинающий",
-    sub: "Не знаешь, с чего начать",
+    title: "Новичок",
+    sub: "Не понимаешь, с чего начать",
     bullets: [
       "непонятно, с чего начать",
-      "нет портфолио",
+      "нет опыта работы с нейросетями",
       "нет уверенности, что получится",
     ],
   },
@@ -106,17 +106,17 @@ const FOR_WHO = [
 
 const RESULTS = [
   { icon: "FileText", title: "Создашь свой первый контент", sub: "текст + визуал" },
-  { icon: "Crosshair", title: "Поймёшь, от чего зависит результат", sub: "и как им управлять" },
-  { icon: "BarChart2", title: "Научишься его улучшать", sub: "делать контент сильнее в точке" },
-  { icon: "Shuffle", title: "Перестанешь «тыкать наугад»", sub: "будешь понимать, что и зачем делаешь" },
-  { icon: "ArrowRight", title: "Увидишь, как работать с нейросетями дальше", sub: "получишь базу для роста и развития" },
+  { icon: "Crosshair", title: "Освоишь логику рабочих промптов", sub: "и будешь понимать, что и зачем делаешь" },
+  { icon: "Settings2", title: "Поймёшь, как адаптировать нейросети под свои задачи", sub: "под любой формат и нишу" },
+  { icon: "Zap", title: "Научишься делать контент быстро", sub: "даже в условиях дедлайна" },
+  { icon: "Lightbulb", title: "Узнаешь фишки нейросетей", sub: "о которых большинство не знает" },
 ];
 
 const HOW = [
   { icon: "Play", title: "Короткие уроки", desc: "Только нужное и ничего лишнего. Без воды и академической теории." },
-  { icon: "Zap", title: "Сразу практика", desc: "Будешь делать задание в нейросети сразу, в каждом уроке." },
+  { icon: "Zap", title: "Много практики", desc: "Будешь делать задания в нейросети сразу, в каждом уроке." },
   { icon: "Layout", title: "Простые шаблоны", desc: "Готовые решения, которые можно сразу использовать под любую задачу." },
-  { icon: "TrendingUp", title: "Результат в процессе", desc: "Первый результат получишь ещё во время обучения, с 1-го урока." },
+  { icon: "TrendingUp", title: "Результат прямо в процессе", desc: "Первый результат получишь ещё во время обучения, с 1-го урока." },
 ];
 
 const FAQS = [
@@ -172,6 +172,7 @@ export default function AICreator() {
             <a href="#myths" className="hover:text-vibe-light transition-colors">О курсе</a>
             <a href="#for-who" className="hover:text-vibe-light transition-colors">Для кого</a>
             <a href="#results" className="hover:text-vibe-light transition-colors">Результат</a>
+            <a href="#student-works" className="hover:text-vibe-light transition-colors">Работы учеников</a>
             <a href="#buy" className="hover:text-vibe-light transition-colors">Купить</a>
           </div>
           <a href="#buy"
@@ -194,12 +195,12 @@ export default function AICreator() {
           {/* Left */}
           <div>
             <h1 className="font-oswald text-5xl md:text-7xl leading-[0.9] text-vibe-light mb-6">
-              СДЕЛАЙ СВОЙ<br />ПЕРВЫЙ<br />
-              <span className="text-vibe-red">ОСМЫСЛЕННЫЙ<br />КОНТЕНТ</span><br />
-              С ПОМОЩЬЮ<br />НЕЙРОСЕТЕЙ
+              КАК СТАВИТЬ<br />ЗАДАЧИ<br />
+              <span className="text-vibe-red">НЕЙРОСЕТЯМ</span><br />
+              И ПОЛУЧАТЬ<br />ВАУ-РЕЗУЛЬТАТ
             </h1>
             <p className="text-vibe-muted text-base mb-8 leading-relaxed max-w-md">
-              4 коротких урока, где ты сразу создаёшь результат и понимаешь, как им управлять
+              4 урока о том, как писать промпты и собирать контент, который выглядит профессионально
             </p>
             {/* Price */}
             <div className="flex items-center gap-3 mb-6">
@@ -283,8 +284,8 @@ export default function AICreator() {
             ЭТО ПОДОЙДЁТ<br />ТЕБЕ, ЕСЛИ ТЫ:
           </h2>
           <p className="text-vibe-muted text-sm mb-2">
-            Работаешь с контентом или хочешь начать,<br />
-            но чувствуешь, что нейросети уже меняют рынок
+            Хочешь, чтобы нейросеть стала твоим помощником,<br />
+            который работает 24/7
           </p>
           <div className="flex items-center gap-2 mb-10 text-vibe-red text-sm font-oswald">
             <span>→</span>
@@ -381,14 +382,14 @@ export default function AICreator() {
                 <span className="text-vibe-red">С НЕЙРОСЕТЯМИ</span>
               </h2>
               <p className="text-vibe-muted text-sm leading-relaxed">
-                Здесь ты подбираешься к практике<br />и поймёшь, как управлять результатами.
+                Здесь ты попробуешь формат и поймёшь, как управлять нейросетями,<br />чтобы получать качественный результат.
               </p>
             </div>
             <div className="space-y-4">
               {[
-                { icon: "CheckCircle", text: "Сделаешь свой первый результат", sub: "Контент в нейросети — это не магия и не удача. Здесь — это факт." },
-                { icon: "CheckCircle", text: "Поймёшь, как это работает", sub: "Поймёшь, в чём разница между «получилось» и «умею делать результат»" },
-                { icon: "CheckCircle", text: "Увидишь, что делать дальше", sub: "Поймёшь контекст и основы, которые дают понимание и готовность к системной работе" },
+                { icon: "CheckCircle", text: "Попробуешь формат на практике", sub: "Сделаешь реальный контент — текст и визуал — прямо во время обучения." },
+                { icon: "CheckCircle", text: "Поймёшь, как управлять нейросетями", sub: "Освоишь логику промптов и перестанешь тыкать наугад." },
+                { icon: "CheckCircle", text: "Получишь базу для роста", sub: "Этот курс — первый шаг к системной, уверенной работе с ИИ." },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-4 p-5 bg-vibe-dark3 border border-vibe-dark3 hover:border-vibe-red/30 transition-colors">
                   <Icon name={item.icon} fallback="Check" size={18} className="text-vibe-red flex-shrink-0 mt-0.5" />
@@ -404,7 +405,7 @@ export default function AICreator() {
       </section>
 
       {/* ── STUDENT WORKS ── */}
-      <section className="py-20 bg-vibe-dark section-appear">
+      <section id="student-works" className="py-20 bg-vibe-dark section-appear">
         <div className="max-w-6xl mx-auto px-5">
           <div className="mb-3">
             <span className="text-vibe-muted text-xs font-oswald uppercase tracking-widest">Примеры</span>
