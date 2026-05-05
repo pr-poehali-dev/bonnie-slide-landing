@@ -15,6 +15,40 @@ function useScrollReveal() {
   }, []);
 }
 
+// ── Marquee ────────────────────────────────────────────────────────────────────
+const AI_TOOLS = [
+  "ChatGPT", "Midjourney", "Claude", "Stable Diffusion", "Sora",
+  "Gemini", "DALL·E", "Runway", "Kling", "Grok", "Ideogram", "Perplexity",
+];
+
+function Marquee({ reverse = false }: { reverse?: boolean }) {
+  const items = [...AI_TOOLS, ...AI_TOOLS];
+  return (
+    <div className="py-4 bg-vibe-dark overflow-hidden border-y border-vibe-dark3">
+      <div
+        className="flex gap-0 whitespace-nowrap"
+        style={{
+          animation: `marquee${reverse ? "Rev" : ""} 28s linear infinite`,
+          width: "max-content",
+        }}
+      >
+        {[...items, ...items].map((name, i) => (
+          <span key={i} className="inline-flex items-center gap-4 px-6">
+            <span className="font-oswald text-sm uppercase tracking-widest text-vibe-muted/50 hover:text-vibe-red transition-colors cursor-default">
+              {name}
+            </span>
+            <span className="text-vibe-red/30 text-xs">✦</span>
+          </span>
+        ))}
+      </div>
+      <style>{`
+        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @keyframes marqueeRev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+      `}</style>
+    </div>
+  );
+}
+
 // ── FAQ accordion ──────────────────────────────────────────────────────────────
 function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
@@ -342,6 +376,8 @@ export default function AICreator() {
         </div>
       </section>
 
+      <Marquee />
+
       {/* ── MYTHS ── */}
       <section id="myths" className="py-20 bg-vibe-dark2 section-appear">
         <div className="max-w-6xl mx-auto px-5">
@@ -427,6 +463,8 @@ export default function AICreator() {
         </div>
       </section>
 
+      <Marquee reverse />
+
       {/* ── RESULTS ── */}
       <section id="results" className="py-20 bg-vibe-dark2 section-appear">
         <div className="max-w-6xl mx-auto px-5">
@@ -452,6 +490,8 @@ export default function AICreator() {
           </div>
         </div>
       </section>
+
+      <Marquee />
 
       {/* ── HOW ── */}
       <section className="py-20 bg-vibe-dark section-appear">
@@ -542,6 +582,8 @@ export default function AICreator() {
           </div>
         </div>
       </section>
+
+      <Marquee reverse />
 
       {/* ── STUDENT WORKS ── */}
       <section id="student-works" className="py-20 bg-vibe-dark section-appear">
