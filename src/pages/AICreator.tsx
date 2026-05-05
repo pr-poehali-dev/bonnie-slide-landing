@@ -403,6 +403,58 @@ export default function AICreator() {
         </div>
       </section>
 
+      {/* ── STUDENT WORKS ── */}
+      <section className="py-20 bg-vibe-dark section-appear">
+        <div className="max-w-6xl mx-auto px-5">
+          <div className="mb-3">
+            <span className="text-vibe-muted text-xs font-oswald uppercase tracking-widest">Примеры</span>
+          </div>
+          <h2 className="font-oswald text-5xl md:text-7xl text-vibe-light mb-10">
+            РАБОТЫ НАШИХ<br />УЧЕНИКОВ
+          </h2>
+          <div className="relative">
+            <div
+              id="student-gallery"
+              className="flex gap-4 overflow-x-auto pb-4 scroll-smooth"
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            >
+              {[
+                { url: "https://cdn.poehali.dev/files/cb8c884a-8d9c-44ee-8cbc-95a0c61b971c.png", alt: "Работа ученика 1" },
+                { url: "https://cdn.poehali.dev/files/dd097e16-dd79-41b6-b901-e8e23b13c62a.png", alt: "Работа ученика 2" },
+                { url: "https://cdn.poehali.dev/files/ec767809-1c2d-4557-b5ba-ebbcac2bddba.png", alt: "Работа ученика 3" },
+                { url: "https://cdn.poehali.dev/files/4f1582f5-fbf2-4cf4-afb8-2e85e902a098.png", alt: "Работа ученика 4" },
+                { url: "https://cdn.poehali.dev/files/9efecd25-8e7f-4855-9052-fff1d3708584.png", alt: "Работа ученика 5" },
+                { url: "https://cdn.poehali.dev/files/cb8c884a-8d9c-44ee-8cbc-95a0c61b971c.png", alt: "Работа ученика 6" },
+              ].map((img, i) => (
+                <div
+                  key={i}
+                  className="flex-shrink-0 w-[calc(33.333%-11px)] aspect-square overflow-hidden border border-vibe-dark3 hover:border-vibe-red/40 transition-colors group"
+                >
+                  <img
+                    src={img.url}
+                    alt={img.alt}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              ))}
+            </div>
+            {/* scroll buttons */}
+            <button
+              onClick={() => { const el = document.getElementById("student-gallery"); if (el) el.scrollBy({ left: -400, behavior: "smooth" }); }}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-10 h-10 bg-vibe-dark3 border border-vibe-dark3 hover:border-vibe-red/40 flex items-center justify-center text-vibe-light hover:text-vibe-red transition-colors hidden md:flex"
+            >
+              <Icon name="ChevronLeft" size={18} />
+            </button>
+            <button
+              onClick={() => { const el = document.getElementById("student-gallery"); if (el) el.scrollBy({ left: 400, behavior: "smooth" }); }}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-10 h-10 bg-vibe-dark3 border border-vibe-dark3 hover:border-vibe-red/40 flex items-center justify-center text-vibe-light hover:text-vibe-red transition-colors hidden md:flex"
+            >
+              <Icon name="ChevronRight" size={18} />
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* ── BUY ── */}
       <section id="buy" ref={buyRef as React.RefObject<HTMLElement>} className="py-24 bg-vibe-dark section-appear">
         <div className="max-w-xl mx-auto px-5 text-center">
