@@ -368,7 +368,7 @@ export default function AICreator() {
         <div className="relative z-10 max-w-6xl mx-auto px-5 py-28 grid md:grid-cols-2 gap-16 items-center">
           {/* Left */}
           <div>
-            <h1 className="font-oswald text-5xl md:text-6xl lg:text-7xl leading-[0.92] text-vibe-light mb-6">
+            <h1 className="font-oswald text-5xl md:text-6xl lg:text-7xl leading-[1.05] text-vibe-light mb-6">
               НАУЧИМ ПРАВИЛЬНО СТАВИТЬ ЗАДАЧИ <span className="text-vibe-red">НЕЙРОСЕТЯМ</span> И ПОЛУЧАТЬ ВАУ-РЕЗУЛЬТАТ
             </h1>
             <p className="text-vibe-muted text-base mb-8 leading-relaxed max-w-md">
