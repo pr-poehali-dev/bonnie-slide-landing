@@ -335,22 +335,15 @@ export default function AICreator() {
         <div className="relative z-10 max-w-6xl mx-auto px-5 py-28 grid md:grid-cols-2 gap-16 items-center">
           {/* Left */}
           <div>
-            <h1 className="font-oswald text-5xl md:text-7xl leading-[0.88] text-vibe-light mb-6">
-              КАК СТАВИТЬ ЗАДАЧИ<br />
-              <span className="text-vibe-red">НЕЙРОСЕТЯМ</span><br />
-              И ПОЛУЧАТЬ ВАУ-РЕЗУЛЬТАТ
+            <h1 className="font-oswald text-5xl md:text-6xl lg:text-7xl leading-[0.92] text-vibe-light mb-6">
+              НАУЧИМ ПРАВИЛЬНО СТАВИТЬ ЗАДАЧИ <span className="text-vibe-red">НЕЙРОСЕТЯМ</span> И ПОЛУЧАТЬ ВАУ-РЕЗУЛЬТАТ
             </h1>
-            <p className="text-vibe-muted text-base mb-6 leading-relaxed max-w-md">
+            <p className="text-vibe-muted text-base mb-8 leading-relaxed max-w-md">
               4 урока о том, как писать промпты и собирать контент, который выглядит профессионально
             </p>
-            <div className="flex items-baseline gap-3 mb-6">
-              <span className="font-oswald text-4xl text-vibe-light font-bold">490 ₽</span>
-              <span className="font-oswald text-xl text-vibe-muted line-through">990 ₽</span>
-              <span className="text-vibe-muted text-xs">разовый доступ навсегда</span>
-            </div>
             <button onClick={() => setPopupOpen(true)}
-              className="inline-flex items-center gap-2 bg-vibe-red text-white font-oswald uppercase tracking-wide px-10 py-4 text-base hover:opacity-90 transition-all animate-pulse-red rounded-full mb-4">
-              Начать →
+              className="inline-flex items-center gap-3 bg-vibe-red text-white font-oswald uppercase tracking-wide px-8 py-4 text-base hover:opacity-90 transition-all animate-pulse-red rounded-full mb-4">
+              Начать за 490 ₽ <span className="line-through opacity-60 font-normal normal-case tracking-normal">990 ₽</span> →
             </button>
             <div className="flex items-center gap-2 text-vibe-muted text-xs">
               <span className="w-2 h-2 bg-green-500 rounded-full" />
@@ -359,20 +352,20 @@ export default function AICreator() {
           </div>
 
           {/* Right — benefits */}
-          <div className="flex flex-col gap-3">
+          <div className="grid grid-cols-2 gap-3">
             {[
-              { icon: "Zap",    title: "Результат сразу",  desc: "Сделаешь первый контент уже в первом уроке" },
-              { icon: "User",   title: "Без опыта",        desc: "Подойдёт, даже если ты никогда не работал с нейросетями" },
-              { icon: "PenLine", title: "Практика",        desc: "Не смотришь — а делаешь" },
-              { icon: "Clock",  title: "Быстро",           desc: "60–90 минут на весь формат" },
+              { icon: "Zap",     title: "Результат сразу", desc: "Сделаешь первый контент уже в первом уроке",              gradient: "from-vibe-red/20 to-vibe-dark3" },
+              { icon: "User",    title: "Без опыта",       desc: "Подойдёт, даже если ты никогда не работал с нейросетями", gradient: "from-purple-800/25 to-vibe-dark3" },
+              { icon: "PenLine", title: "Практика",        desc: "Не смотришь — а делаешь",                                 gradient: "from-blue-800/25 to-vibe-dark3" },
+              { icon: "Clock",   title: "Быстро",          desc: "60–90 минут на весь формат",                              gradient: "from-amber-800/25 to-vibe-dark3" },
             ].map((b) => (
               <div key={b.title}
-                className="flex items-center gap-4 bg-vibe-dark3/80 rounded-2xl px-5 py-4 hover:bg-vibe-dark3 transition-colors">
-                <div className="w-10 h-10 bg-vibe-red/15 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Icon name={b.icon} fallback="Star" size={18} className="text-vibe-red" />
+                className={`flex flex-col justify-between bg-gradient-to-br ${b.gradient} border border-vibe-dark3/60 rounded-2xl p-6 min-h-[180px] hover:border-vibe-red/30 transition-colors`}>
+                <div className="w-12 h-12 bg-vibe-red/15 rounded-xl flex items-center justify-center mb-4">
+                  <Icon name={b.icon} fallback="Star" size={20} className="text-vibe-red" />
                 </div>
                 <div>
-                  <div className="font-oswald text-vibe-light text-base leading-tight">{b.title}</div>
+                  <div className="font-oswald text-vibe-light text-xl leading-tight mb-1">{b.title}</div>
                   <div className="text-vibe-muted text-sm leading-relaxed">{b.desc}</div>
                 </div>
               </div>
