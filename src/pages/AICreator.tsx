@@ -456,28 +456,27 @@ export default function AICreator() {
       {/* ── HOW ── */}
       <section className="py-20 bg-vibe-dark section-appear">
         <div className="max-w-6xl mx-auto px-5">
-          <div className="grid md:grid-cols-2 gap-16 items-start">
-            <div>
-              <div className="mb-3">
-                <span className="text-vibe-muted text-xs font-oswald uppercase tracking-widest">Процесс обучения</span>
-              </div>
-              <h2 className="font-oswald text-5xl md:text-6xl text-vibe-light leading-none">
-                КАК ЭТО<br />ПРОХОДИТ
-              </h2>
-              <p className="text-vibe-muted text-sm mt-4">Быстро, просто и сразу с результатом</p>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {HOW.map((h, i) => (
-                <div key={i} className="bg-vibe-dark3 border border-vibe-dark3 p-5 hover:border-vibe-red/30 transition-colors group"
-                  style={{ transitionDelay: `${i * 80}ms` }}>
-                  <div className="w-9 h-9 bg-vibe-red/10 flex items-center justify-center mb-3">
-                    <Icon name={h.icon} fallback="Star" size={16} className="text-vibe-red" />
-                  </div>
-                  <h3 className="font-oswald text-vibe-light text-sm mb-2 group-hover:text-vibe-red transition-colors">{h.title}</h3>
-                  <p className="text-vibe-muted text-xs leading-relaxed">{h.desc}</p>
+          <div className="mb-3">
+            <span className="text-vibe-muted text-xs font-oswald uppercase tracking-widest">Процесс обучения</span>
+          </div>
+          <h2 className="font-oswald text-5xl md:text-6xl text-vibe-light leading-none mb-4">
+            КАК ЭТО<br />ПРОХОДИТ
+          </h2>
+          <p className="text-vibe-muted text-sm mb-12">Быстро, просто и сразу с результатом</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-vibe-dark3">
+            {HOW.map((h, i) => (
+              <div key={i}
+                className="relative flex flex-col p-8 border-r border-vibe-dark3 last:border-r-0 hover:bg-vibe-dark3/50 transition-colors group">
+                <div className="text-vibe-dark3 font-oswald text-7xl font-bold absolute top-4 right-6 select-none opacity-30 group-hover:opacity-50 transition-opacity">
+                  {String(i + 1).padStart(2, "0")}
                 </div>
-              ))}
-            </div>
+                <div className="w-12 h-12 bg-vibe-red/10 border border-vibe-red/20 flex items-center justify-center mb-6">
+                  <Icon name={h.icon} fallback="Star" size={20} className="text-vibe-red" />
+                </div>
+                <h3 className="font-oswald text-vibe-light text-xl mb-3 group-hover:text-vibe-red transition-colors leading-tight">{h.title}</h3>
+                <p className="text-vibe-muted text-sm leading-relaxed">{h.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -512,6 +511,33 @@ export default function AICreator() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA AFTER FIRST STEP ── */}
+      <section className="py-16 bg-vibe-dark2 section-appear">
+        <div className="max-w-6xl mx-auto px-5">
+          <div className="relative overflow-hidden border border-vibe-red/40 p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="absolute inset-0 opacity-[0.04]"
+              style={{ backgroundImage: "repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(255,255,255,.3) 20px,rgba(255,255,255,.3) 21px)" }} />
+            <div className="absolute top-0 left-0 w-64 h-64 bg-vibe-red/10 rounded-full blur-[80px] pointer-events-none" />
+            <div className="relative z-10">
+              <p className="font-oswald text-vibe-red text-xs uppercase tracking-widest mb-2">Старт прямо сейчас</p>
+              <h3 className="font-oswald text-3xl md:text-5xl text-vibe-light leading-tight mb-3">
+                Сделай первый шаг<br />к результату сегодня
+              </h3>
+              <p className="text-vibe-muted text-sm max-w-md">
+                Пока другие думают — ты уже умеешь. 4 урока, первый контент, понимание нейросетей — всё за 490 ₽.
+              </p>
+            </div>
+            <div className="relative z-10 flex flex-col items-center gap-3 flex-shrink-0">
+              <button onClick={() => setPopupOpen(true)}
+                className="bg-vibe-red text-white font-oswald uppercase tracking-widest px-10 py-5 text-lg hover:bg-red-700 transition-colors rounded-full whitespace-nowrap animate-pulse-red">
+                Начать за 490 ₽ <span className="line-through opacity-60">990 ₽</span> →
+              </button>
+              <span className="text-vibe-muted text-xs">Доступ навсегда · без подписки</span>
             </div>
           </div>
         </div>
